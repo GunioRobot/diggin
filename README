@@ -2,6 +2,10 @@ Diggin is a library of PHP Classes.(for spidering)
 main repository is
 http://diggin.googlecode.com/svn/trunk/
 
+install:
+pear channel-discover openpear.org
+pear install openpear/Diggin-alpha
+
 //------------------------------------ 
 Diggin_Scraper
 - easily scraping like perl's Web::Scraper
@@ -16,9 +20,9 @@ $ebay = new Diggin_Scraper();
 $ebay->process('//table[@class="nol"]', array('items[]' => $items))
      ->scrape('http://shop.ebay.com/items/_W0QQ_nkwZappleQ20ipodQ20nanoQQ_armrsZ1QQ_fromZQQ_mdoZ');
 
-var_dump($ebay->items); //you can __get
+var_dump($ebay->items);
 
-/* you can access multi-array without coding-"foreach"
+/* get as multi-array without coding-"foreach"
 array(43) {
   [0]=>
   array(3) {
