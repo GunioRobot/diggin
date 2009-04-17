@@ -1,0 +1,10 @@
+Diggin is a library of PHP Classes.(for spidering)
+main repository is
+http://diggin.googlecode.com/svn/trunk/
+ 
+Diggin_Scraper
+- easily scraping like perl's Web::Scraper
+
+Diggin_Service_Wedata
+- component for wedata.net API
+and more..
