@@ -1,6 +1,6 @@
 Diggin is a library of PHP Classes.(for spidering)
 main repository is
-http://diggin.googlecode.com/svn/trunk/
+http://diggin.googlecode.com/svn/standard/trunk/
 
 install:
 pear channel-discover openpear.org
