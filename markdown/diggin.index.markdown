@@ -12,7 +12,7 @@ Diggin は主にsasezaki個人によるスパイダー向けライブラリー�
 多くのライブラリは、ニッチな用途のため万人向けではないでしょう。
 ### インストール ###
 
-一部Zend Framework(以下、ZF)やPHP拡張に依存しているものがあります。利用の際には、各コンポーネント内の実装にもとづいて環境を用意してください。(参照：[ZFのインストールガイド](http://framework.zend.com/manual/ja/introduction.installation.html))。Digginのバージョン0.6ではZF1.6以上、0.7ではZF1.10以上が必要となります。
+一部Zend Framework(以下、ZF)やPHP拡張に依存しているものがあります。利用の際には、各コンポーネント内の実装にもとづいて環境を用意してください。(参照：[ZFのインストールガイド](http://framework.zend.com/manual/ja/introduction.installation.html))。Digginのバージョン0.6ではZF1.6以上、0.7ではZF1.9以上が必要となります。
 
     Diggin の SVN リポジトリの最先端の URL は http://diggin.googlecode.com/svn/standard/trunk/ です。
 
@@ -20,12 +20,14 @@ Zend Framework 同様、 あなたのアプリケーションからフレーム�
 
 ---
 ## Diggin_CDDB
+- Diggin_CDDB_Application_CDex
 
 ## Diggin_Console
 
 ## Diggin_Debug
 
 ## Diggin_Exception
+- [Digginにおける例外](diggin.exception.html)
 
 ## Diggin_Felica
 
@@ -35,19 +37,52 @@ Zend Framework 同様、 あなたのアプリケーションからフレーム�
     - Diggin_Http_CookieJar_Loader_Firefox3
 - Diggin_Http_Response_CharactorEncoding
 
-## Diggin_Json
-
-## Diggin_Loader
+## Diggin_Json_Expr_Webscraperjs
 
 ## Diggin_RobotRules
 
 ## Diggin_Scraper
+- [Diggin_Scraper導入](diggin.scraper.html)
+- [フィルタの利用](diggin.scraper.filter.html)
+- [Diggin_Scraper_Helper](diggin.scraper.helper.html)
+
+## Diggin_Service
+- Diggin_Service_Eventcast
+- Diggin_Service_Tumblr
+- Diggin_Service_Wedata
 
 ## Diggin_Siteinfo
 
 ## Diggin_Uri
+- [Diggin_Uri_Http](diggin.uri.http.html)
 
 ## Diggin_Version
 
 ---
 ## Version 0.7での変更点
+0.7ではいくつかの大きな変更を予定しています。
+
+- 追加コンポーネント
+    - Diggin_RobotRules
+- APIの変更
+    - Diggin_Service_Wedataは静的コールが廃止されました。
+- Diggin_Scraperでの内部変更
+    - Diggin_Scraper各クラスに対する拡張クラスを作成されている方は変更が必要です。
+    - アンパサンド(&)のasXMLオーバーライド用、Diggin_Scraper_Wrapper_SimplexmlElementの追加
+        - Strategy(Flexible)での各value取得でのエンティティー変換のとりやめ
+        - Helper_Simplexml_SimplexmlAbstractの変換のとりやめ
+    - Diggin_Scraper_Strategy_Callbackの導入
+        - イテレータでの遅延評価のために、Diggin_Scraper_Strategy_Abstract::getValuesが大変更となります。0.6用に作成したもの取得値が違った場合この箇所が原因となります。
+        - Callback導入に伴い、Diggin_Scraper_Strategy_*でのgetValue廃止
+    - Diggin_Scraper_Adapter_HtmlscrapingにてDiggin_Http_Response_CharactorEncodingを使用するよう変更。
+
+0.6系統用に以下のブランチが作成されました。但し、アップデートは重要な場合を除きアップデートされません。
+
+    http://diggin.googlecode.com/svn/standard/brances/release-0.6/
+
+### Version 0.7.xにて予定している変更点
+- Diggin_Spider_Request_Queueコンポーネント導入(spizer/kumoからのポート)
+- Diggin_Scraper_Helper_Simplexml_Pagerizeのリファクタリング
+- Diggin_Siteinfoの構成の見直し
+- Diggin_RobotRulesのrobots.txt以外の対応
+
