@@ -18,5 +18,3 @@ Diggin_Scraperは標準では、tidy拡張モジュールが使用できるこ�
 
     pear install Net_Url2-beta
 
----
-[次のページ](diggin.scraper.usage.html)

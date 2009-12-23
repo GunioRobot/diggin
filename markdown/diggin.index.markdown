@@ -32,7 +32,7 @@ pearを用いたインストール方法も用意しています。
 ## Diggin_Debug
 
 ## Diggin_Exception
-- [Digginにおける例外](diggin.exception.html)
+- [Digginにおける例外](diggin.exception.markdown)
 
 ## Diggin_Felica
 
@@ -40,7 +40,7 @@ pearを用いたインストール方法も用意しています。
 - Diggin_Http_Client_Adapter_TestPlus
 - Diggin_Http_CookieJar_Loader
     - Diggin_Http_CookieJar_Loader_Firefox3
-- [Diggin_Http_Response_CharactorEncoding](diggin.http.response.charactorencoding.html)
+- [Diggin_Http_Response_CharactorEncoding](diggin.http.response.charactorencoding.markdown)
 
 ## Diggin_Json
 - Diggin_Json_Expr_Webscraperjs
@@ -48,24 +48,24 @@ pearを用いたインストール方法も用意しています。
 ## Diggin_RobotRules
 
 ## Diggin_Scraper
-- [Diggin_Scraper導入](diggin.scraper.html)
-- [基本的な使い方](diggin.scraper.usage.html)
-- [フィルタの利用](diggin.scraper.filter.html)
-- [Diggin_Scraper_Helper](diggin.scraper.helper.html)
-- [コマンドライン用ツール exthtml.php](diggin.scraper.exthtml.html)
+- [Diggin_Scraper導入](diggin.scraper.markdown)
+- [基本的な使い方](diggin.scraper.usage.markdown)
+- [フィルタの利用](diggin.scraper.filter.markdown)
+- [Diggin_Scraper_Helper](diggin.scraper.helper.markdown)
+- [コマンドライン用ツール extmarkdown.php](diggin.scraper.exthtml.html)
 
 ## Diggin_Service
 - Diggin_Service_Eventcast
 - Diggin_Service_Tumblr
-- [Diggin_Service_Wedata](diggin.service.wedata.html)
+- [Diggin_Service_Wedata](diggin.service.wedata.markdown)
 
 ## Diggin_Siteinfo
 
 ## Diggin_Uri
-- [Diggin_Uri_Http](diggin.uri.http.html)
+- [Diggin_Uri_Http](diggin.uri.http.markdown)
 
 ## Diggin_Version
-- [Digginのバージョンの取得](diggin.version.html)
+- [Digginのバージョンの取得](diggin.version.markdown)
 
 ---
 ## 著作権に関する情報
