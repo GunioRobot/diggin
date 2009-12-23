@@ -8,8 +8,8 @@ Diggin - Simplicity PHP Library
 ### 概要 ###
 
 Diggin は主にsasezaki個人によるスパイダー向けライブラリーの総称です。 高品質を謳ったり、パワフルさを持ち合わせている訳ではありません。
-
 多くのライブラリは、ニッチな用途のため万人向けではないでしょう。
+
 ### インストール ###
 
 一部Zend Framework(以下、ZF)やPHP拡張に依存しているものがあります。利用の際には、各コンポーネント内の実装にもとづいて環境を用意してください。(参照：[ZFのインストールガイド](http://framework.zend.com/manual/ja/introduction.installation.html))。Digginのバージョン0.6ではZF1.6以上、0.7ではZF1.9以上が必要となります。
@@ -17,6 +17,11 @@ Diggin は主にsasezaki個人によるスパイダー向けライブラリー�
     Diggin の SVN リポジトリの最先端の URL は http://diggin.googlecode.com/svn/standard/trunk/ です。
 
 Zend Framework 同様、 あなたのアプリケーションからフレームワークのクラス群にアクセスできるようにする必要があります。これにはいくつかの方法がありますが、PHP の include_path に Diggin ライブラリへのパスを含める必要があります。
+
+pearを用いたインストール方法も用意しています。
+
+    pear channel-discover openpear.org
+    pear install openpear/Diggin-alpha
 
 ---
 ## Diggin_CDDB
@@ -35,21 +40,24 @@ Zend Framework 同様、 あなたのアプリケーションからフレーム�
 - Diggin_Http_Client_Adapter_TestPlus
 - Diggin_Http_CookieJar_Loader
     - Diggin_Http_CookieJar_Loader_Firefox3
-- Diggin_Http_Response_CharactorEncoding
+- [Diggin_Http_Response_CharactorEncoding](diggin.http.response.charactorencoding.html)
 
-## Diggin_Json_Expr_Webscraperjs
+## Diggin_Json
+- Diggin_Json_Expr_Webscraperjs
 
 ## Diggin_RobotRules
 
 ## Diggin_Scraper
 - [Diggin_Scraper導入](diggin.scraper.html)
+- [基本的な使い方](diggin.scraper.usage.html)
 - [フィルタの利用](diggin.scraper.filter.html)
 - [Diggin_Scraper_Helper](diggin.scraper.helper.html)
+- [コマンドライン用ツール exthtml.php](diggin.scraper.exthtml.html)
 
 ## Diggin_Service
 - Diggin_Service_Eventcast
 - Diggin_Service_Tumblr
-- Diggin_Service_Wedata
+- [Diggin_Service_Wedata](diggin.service.wedata.html)
 
 ## Diggin_Siteinfo
 
@@ -57,6 +65,14 @@ Zend Framework 同様、 あなたのアプリケーションからフレーム�
 - [Diggin_Uri_Http](diggin.uri.http.html)
 
 ## Diggin_Version
+- [Digginのバージョンの取得](diggin.version.html)
+
+---
+## 著作権に関する情報
+Digginは、全てのファイルが同一ライセンスではないことに注意してください。(別々のパッケージとして配布しています。)
+Diggin_Scraper_Adapter_Htmlscrapingならびに
+Diggin_Http_Response_CharactorEncodingについてはLGPLです。
+それ以外のものについてはNew BSD Licenseです。
 
 ---
 ## Version 0.7での変更点
@@ -72,13 +88,13 @@ Zend Framework 同様、 あなたのアプリケーションからフレーム�
         - Strategy(Flexible)での各value取得でのエンティティー変換のとりやめ
         - Helper_Simplexml_SimplexmlAbstractの変換のとりやめ
     - Diggin_Scraper_Strategy_Callbackの導入
-        - イテレータでの遅延評価のために、Diggin_Scraper_Strategy_Abstract::getValuesが大変更となります。0.6用に作成したもの取得値が違った場合この箇所が原因となります。
+        - イテレータでの遅延評価のために、Diggin_Scraper_Strategy_Abstract::getValuesが大変更となります。0.6用に作成したユーザースクリプトの取得値が違った場合この箇所が原因となります。
         - Callback導入に伴い、Diggin_Scraper_Strategy_*でのgetValue廃止
     - Diggin_Scraper_Adapter_HtmlscrapingにてDiggin_Http_Response_CharactorEncodingを使用するよう変更。
 
-0.6系統用に以下のブランチが作成されました。但し、アップデートは重要な場合を除きアップデートされません。
+0.6系統用に以下のブランチが作成されました。但し、アップデートは重要な場合を除き行われません。
 
-    http://diggin.googlecode.com/svn/standard/brances/release-0.6/
+    http://diggin.googlecode.com/svn/standard/branches/release-0.6/
 
 ### Version 0.7.xにて予定している変更点
 - Diggin_Spider_Request_Queueコンポーネント導入(spizer/kumoからのポート)
