@@ -12,7 +12,7 @@ Diggin は主にsasezaki個人によるスパイダー向けライブラリー�
 
 ### インストール ###
 
-一部Zend Framework(以下、ZF)やPHP拡張に依存しているものがあります。利用の際には、各コンポーネント内の実装にもとづいて環境を用意してください。(参照：[ZFのインストールガイド](http://framework.zend.com/manual/ja/introduction.installation.html))。Digginのバージョン0.6ではZF1.6以上、0.7ではZF1.9以上が必要となります。
+一部Zend Framework(以下、ZF)やPHP拡張に依存しているものがあります。利用の際には、各コンポーネントの必要条件にもとづいて環境を用意してください。(参照：[ZFのインストールガイド](http://framework.zend.com/manual/ja/introduction.installation.html))。Digginのバージョン0.6ではZF1.6以上、0.7ではZF1.9以上が必要となります。
 
     Diggin の SVN リポジトリの最先端の URL は http://diggin.googlecode.com/svn/standard/trunk/ です。
 
@@ -51,7 +51,8 @@ pearを用いたインストール方法も用意しています。
 - [Diggin_Scraper導入](diggin.scraper.markdown)
 - [基本的な使い方](diggin.scraper.usage.markdown)
 - [フィルタの利用](diggin.scraper.filter.markdown)
-- [Diggin_Scraper_Helper](diggin.scraper.helper.markdown)
+- [多次元配列での取得](diggin.scraper.multiarray.markdown)
+- [ヘルパーの利用](diggin.scraper.helper.markdown)
 - [コマンドライン用ツール extmarkdown.php](diggin.scraper.exthtml.html)
 
 ## Diggin_Service

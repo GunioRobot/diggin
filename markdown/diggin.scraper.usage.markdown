@@ -26,7 +26,7 @@ processメソッドには、多種多様な抽出方法が指定可能ですが�
 スクレイピングの実行は、 scrapeメソッドをコール時に行われます。scrapeメソッドには対象となるサイトのURLを指定します。
 
 ---
-### 実装例 ###
+### 使用例 ###
 demos/Diggin/Scraperに格納してあるスクリプト群にて実際の使用例を確認できます。
 
 ＊ スクレイパーからリクエストを送信する際は、各サイトの使用許諾をご確認ください。
@@ -38,41 +38,36 @@ demos/Diggin/Scraperに格納してあるスクリプト群にて実際の使用
 
 取得型        | 説明
 ------------- | -------------
-ASXML         | 単純に指定された要素をSimplexmlのasXml()メソッドにて取得し返却します。(0.7からはエンティティーデコードされています。)
-TEXT          | 指定対象のHTML文字列からテキスト部分を取得します。
-HTML          | 指定対象のHTML文字列からテキスト部分を取得したあと、外側のタグを削除します。
-PLAIN         | rhacoのSimpleTagにおける’PLAIN’に近いテキスト取得を行います。
+raw           | 指定要素をそのままオブジェクトにて返却します。SimpleXMLを使用する場合に便利です。
+asxml         | 単純に指定された要素をSimplexmlのasXml()メソッドにて取得し返却します。
+text          | 指定対象のHTML文字列からテキスト部分を取得します。
+html          | 指定対象のHTML文字列からテキスト部分を取得したあと、外側のタグを削除します。
+plain         | rhacoのSimpleTagにおける’PLAIN’に近いテキスト取得を行います。
 @"属性"       | 指定対象に対応する「@"属性"」の値を取得します。(@href, @srcについては絶対パスへの変換も行います。)
+              | 0.7では、属性がセットされてない場合nullが格納されます。
 
 取得型は、0.6まではDiggin_Scraper_Strategy_*のgetValue()、0.7では各Diggin_Scraper_Evaluator_Abstractを継承した各クラスにあるメソッドにて定義されています。
 
 ---
+### デバッグ方法 ###
+Http経由でのスクレイプは、デバッグの度にhttpリクエストが発生していてはいけません。デバッグのための、方法をここに提示します。
 
-### ブロック構造(多次元配列)での取得 ###
+- Zend_Http_Client_Adapter_Testの利用
+Diggin_ScraperのスタティックメソッドsetHttpClientには、Zend_Http_Clientのインスタンスを指定できます。
 
-これまであった数多くのスクレイピング用のPHPに作られたライブラリには、スクレイピングが盛んな他の言語圏(RubyやPerl)では既に知れ渡っている概念が欠落していました。それは「ブロック構造」(本マニュアルではそのように定義します）での取得です。
+    $test = new Zend_Http_Client_Adapter_Test;
+    $client = new Zend_Http_Client(null, array('adapter' => $test));
+    Diggin_Scraper::setHttpClient($client);
 
-では、ブロック構造での取得とは何でしょう？
+Diggin_Scraperのインスタンスをnewする前に、上記のようなテスト用コードを挿入します。
+詳しくは、Zend Frameworkのテストアダプタの項目を参照してください。
 
-すでに、Web::Scraper用に書かれた以下の記事が参考になります。
-[Web::Scraper でいい感じのデータ構造になってくれなくて困っているのはどこのどいつだ〜い? アタイだよ!](http://en.yummy.stripper.jp/?eid=800109)
+- scape()メソッドでの配列指定
+上の方法でも時に億劫に感じることでしょう。Diggin_Scraperのscrapeメソッドにて、第一引数に配列が渡された場合、Zend_Http_Responseオブジェクトへと変換が行われます。(ヘッダーが指定されてない場合は、200レスポンスが架空に設定されます。)
 
-Diggin_Scraperでは、このブロック構造での取得を容易にするために、Diggin_Scraperのインスタンスが配列にセットされた場合、再起的に処理を行います。
-
-    //まず、再起処理用のDiggin_Scraperインスタンスを生成します。
-    $ranking = new Diggin_Scraper();
-
-    //次に、scrapeメソッドを実行するDiggin_Scraperクラスでのprocessメソッドと同様に取得要素を指定します。
-    $ranking->process('.', 'rank => [@background, "Digits"]')
-            ->process('img', 'star => @alt', 'image => @src')
-            ->process('td.text', 'text => TEXT')
-            ->process('.//td[contains(@class, "lucky") and (not(contains(@valign, "bottom")))]', 'lucky => TEXT');
-
-    //上記で作った"$ranking"を、Diggin_Scraperのprocessメソッドにて連想配列としてセットします。
-    $scraper = new Diggin_Scraper();
-    $scraper->process('//td[@class="day" and @height < 100]', 'date => "TEXT"')
-            ->process('//table[contains(@background, "item/rank")]', array('ranking[]' => $ranking))
-            ->scrape($url);
+    $html = '<html><body></body></html>'
+    $scrpaer = new Diggin_Scraper;
+    $scrape->scrape(array($html)); //レスポンスボディ(html)をarrayにて渡します。
 
 ---
 ### Diggin_Scraperにおける例外処理 ###
@@ -84,8 +79,3 @@ Diggin_Scraperからリクエストを発行した場合には、レスポンス
 Diggin_Scraperでは、scrapeを実行するプロセスの抽出要素に該当するものが無かった場合Diggin_Scraper_Strategy_Exception例外を投げます。ただし、多次元配列取得用にセットされたプロセス分については、値が格納されません。(数値添字配列から該当のキーがスキップされたものになります。)
 これは、該当対象が無かった場合に継続の処理ができないという判断によるものです。コンストラクタにて、この例外を投げないよう変更できます。Web::Scraperでは、該当対象が無かった場合ブランクが格納されます。この仕様の相違については現在標準で例外を投げないよう検討しています。
 
-
----
-### Diggin_Scraper各クラスの相関 ###
-以下の図では、Diggin_ScraperならびにZend Frameworkの各クラスの相関関係を図示しています。(※この図はVersion 0.5の頃に作成したものです)
-<img src="scraper.gif" alt="Diggin_Scraper"/>
