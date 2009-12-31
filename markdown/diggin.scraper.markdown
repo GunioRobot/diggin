@@ -11,7 +11,7 @@ WEBデータの取得にはZend FrameworkのZend_Http_Clientを利用するた�
 
 抽出方法定義はPerlのWeb::Scraperモジュールを強く意識した作りになっており、Web::Scraper用のDSLをちょっとした変更でDiggin_Scraperでも利用ができるでしょう。
 
-スクレイピングならびにスパイダリングに関しては知っておくべきルールならびにマナーがあります。スパイダリングに関する良書は、[Spidering hacks(O'reilly)](http://www.oreilly.co.jp/books/4873111870/)(ISBN-10 4873111870; ISBN-13 978-4873111872)です。
+スクレイピングならびにスパイダリングに関しては知っておくべきルールなどがあります。スパイダリングに関する良書は、[Spidering hacks(O'reilly)](http://www.oreilly.co.jp/books/4873111870/)(ISBN-10 4873111870; ISBN-13 978-4873111872)です。
 
 ### 推奨環境 ###
 Diggin_Scraperは標準では、tidy拡張モジュールが使用できることを前提としています。また、URL相対パス解決のために、Net_URL2を用います。以下のコマンドにてインストールが可能です。

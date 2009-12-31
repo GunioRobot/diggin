@@ -53,7 +53,7 @@ pearを用いたインストール方法も用意しています。
 - [フィルタの利用](diggin.scraper.filter.markdown)
 - [多次元配列での取得](diggin.scraper.multiarray.markdown)
 - [ヘルパーの利用](diggin.scraper.helper.markdown)
-- [コマンドライン用ツール extmarkdown.php](diggin.scraper.exthtml.html)
+- [コマンドライン用ツール exthtml.php](diggin.scraper.exthtml.html)
 
 ## Diggin_Service
 - Diggin_Service_Eventcast

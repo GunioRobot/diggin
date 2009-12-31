@@ -7,7 +7,7 @@ processメソッドには、多種多様な抽出方法が指定可能ですが�
 - 第二引数以降には、その抽出対象のプロパティ名(任意)と取得型(「表示されている文字列」として、「HTMLソース文字列」としてあるいは「取得したSimplexmlそのまま」かなど)、そして必要であればフィルタ名を以下のようにすべて文字列として囲みます。
 
         $scraper = new Diggin_Scraper();
-        $scraper->process('//p//a', 'list[]      => TEXT,   Digits') 
+        $scraper->process('//p//a', 'list[]      => text,   Digits') 
               //->process('抽出要素', 'プロパティ => 取得型, フィルタ名') 
                 ->scrape('http://example.net/');
 
@@ -53,6 +53,7 @@ plain         | rhacoのSimpleTagにおける’PLAIN’に近いテキスト取
 Http経由でのスクレイプは、デバッグの度にhttpリクエストが発生していてはいけません。デバッグのための、方法をここに提示します。
 
 - Zend_Http_Client_Adapter_Testの利用
+
 Diggin_ScraperのスタティックメソッドsetHttpClientには、Zend_Http_Clientのインスタンスを指定できます。
 
     $test = new Zend_Http_Client_Adapter_Test;
@@ -63,6 +64,7 @@ Diggin_Scraperのインスタンスをnewする前に、上記のようなテス
 詳しくは、Zend Frameworkのテストアダプタの項目を参照してください。
 
 - scape()メソッドでの配列指定
+
 上の方法でも時に億劫に感じることでしょう。Diggin_Scraperのscrapeメソッドにて、第一引数に配列が渡された場合、Zend_Http_Responseオブジェクトへと変換が行われます。(ヘッダーが指定されてない場合は、200レスポンスが架空に設定されます。)
 
     $html = '<html><body></body></html>'
