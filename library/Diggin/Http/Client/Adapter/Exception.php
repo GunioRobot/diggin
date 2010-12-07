@@ -22,7 +22,7 @@ namespace Diggin\Http\Client\Adapter;
 /**
  * @see Diggin_Http_Client_Exception
  */
-require_once 'Diggin/Http/Client/Exception.php';
+// require_once 'Diggin/Http/Client/Exception.php';
 
 class Exception extends \Diggin\Http\Client\Exception
 {}

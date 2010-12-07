@@ -1,6 +1,6 @@
 <?php
 
-require_once 'Zend/Http/Client/Adapter/Socket.php';
+// require_once 'Zend/Http/Client/Adapter/Socket.php';
 class SocketProgressBar
         extends \Zend\Http\Client\Adapter\Socket
 {
@@ -22,8 +22,8 @@ class SocketProgressBar
         if (PHP_SAPI != 'cli') throw new \RuntimeException();
 
         if (!$this->_progressBar) {
-            require_once 'Zend/ProgressBar/Adapter/Console.php';
-            require_once 'Zend/ProgressBar.php';
+            // require_once 'Zend/ProgressBar/Adapter/Console.php';
+            // require_once 'Zend/ProgressBar.php';
             $adapter = new \Zend\ProgressBar\Adapter\Console();
             $this->_progressBar = new \Zend\ProgressBar($adapter, 0, $this->getMax());
         }
@@ -91,7 +91,7 @@ class SocketProgressBar
                     $chunksize = trim($line);
                     if (! ctype_xdigit($chunksize)) {
                         $this->close();
-                        require_once 'Zend/Http/Client/Adapter/Exception.php';
+                        // require_once 'Zend/Http/Client/Adapter/Exception.php';
                         throw new \Zend\Http\Client\Adapter\Exception('Invalid chunk size "' .
                             $chunksize . '" unable to read chunked body');
                     }

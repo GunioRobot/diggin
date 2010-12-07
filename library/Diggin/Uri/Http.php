@@ -64,7 +64,7 @@ class Http
         } else {
         */
             if (!$this->_baseUri instanceof \Net\URL2) {
-                require_once 'Net/URL2.php';
+                // require_once 'Net/URL2.php';
                 $this->_baseUri = new \Net\URL2((string)$this->_baseUri);
             }
             return $this->_baseUri->resolve($target)->getUrl();

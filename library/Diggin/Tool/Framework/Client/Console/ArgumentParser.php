@@ -24,7 +24,7 @@ namespace Diggin\Tool\Framework\Client\Console;
 /**
  * @see Zend_Tool_Framework_Client_Console_ArgumentParser
  */
-require_once 'Zend/Tool/Framework/Client/Console/ArgumentParser.php';
+// require_once 'Zend/Tool/Framework/Client/Console/ArgumentParser.php';
 
 /**
  * @category   Diggin
@@ -53,7 +53,7 @@ class ArgumentParser extends \Zend\Tool\Framework\Client\Console\ArgumentParser
      */
     protected function _createHelpResponse($options = array())
     {
-        require_once 'Diggin/Tool/Framework/Client/Console/HelpSystem.php';
+        // require_once 'Diggin/Tool/Framework/Client/Console/HelpSystem.php';
         $helpSystem = new HelpSystem();
         $helpSystem->setShName($this->_shName);
         $helpSystem->setRegistry($this->_registry);

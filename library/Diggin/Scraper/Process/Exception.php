@@ -22,7 +22,7 @@ namespace Diggin\Scraper\Process;
 /**
  * @see Diggin_Exception
  */
-require_once 'Diggin/Scraper/Exception.php';
+// require_once 'Diggin/Scraper/Exception.php';
 
 /**
  * @category   Diggin

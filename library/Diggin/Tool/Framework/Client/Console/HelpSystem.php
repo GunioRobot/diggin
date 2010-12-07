@@ -84,7 +84,7 @@ class HelpSystem extends \Zend\Tool\Framework\Client\Console\HelpSystem
         /**
          * @see Zend_Version
          */
-        require_once 'Zend/Version.php';
+        // require_once 'Zend/Version.php';
         //$this->_response->appendContent('Zend Framework', array('color' => array('hiWhite'), 'separator' => false));
         //$this->_response->appendContent(' Command Line Console Tool v' . Zend_Version::VERSION . '');
         $this->_response->appendContent(strtoupper($this->_shName), array('color' => array('hiWhite'), 'separator' => false));

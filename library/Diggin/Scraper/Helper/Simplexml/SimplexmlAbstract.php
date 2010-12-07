@@ -21,7 +21,7 @@
  */
 namespace Diggin\Scraper\Helper\Simplexml;
 
-require_once 'Diggin/Scraper/Helper/HelperAbstract.php';
+// require_once 'Diggin/Scraper/Helper/HelperAbstract.php';
 
 abstract class SimplexmlAbstract extends \Diggin\Scraper\Helper\HelperAbstract
 {

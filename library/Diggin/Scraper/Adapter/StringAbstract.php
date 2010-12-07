@@ -22,7 +22,7 @@ namespace Diggin\Scraper\Adapter;
 /**
  * @see Diggin_Scraper_Adapter_Interface
  */
-require_once 'Diggin/Scraper/Adapter/Interface.php';
+// require_once 'Diggin/Scraper/Adapter/Interface.php';
 
 abstract class StringAbstract implements AdapterInterface
 {
@@ -39,7 +39,7 @@ abstract class StringAbstract implements AdapterInterface
     {
         $string = $this->getString($response);
         if (!is_string($string)) {
-            require_once 'Diggin/Scraper/Adapter/Exception.php';
+            // require_once 'Diggin/Scraper/Adapter/Exception.php';
             throw new Exception('adapter getString not return String');
         }
         

@@ -22,7 +22,7 @@
 namespace Diggin\Scraper\Evaluator;
 
 /** Diggin_Scraper_Evaluator_Abstract */
-require_once 'Diggin/Scraper/Evaluator/Abstract.php';
+// require_once 'Diggin/Scraper/Evaluator/Abstract.php';
 
 class String extends AbstractEvaluator
 {
@@ -40,7 +40,7 @@ class String extends AbstractEvaluator
                 return $value;
         }
 
-        require_once 'Diggin/Scraper/Evaluator/Exception.php';
+        // require_once 'Diggin/Scraper/Evaluator/Exception.php';
         $process = $this->getProcess();
         throw new Exception($type." is unknown type ($process)");
     }

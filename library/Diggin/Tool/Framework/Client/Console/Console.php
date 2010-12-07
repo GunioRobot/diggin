@@ -31,7 +31,7 @@ namespace Diggin\Tool\Framework\Client\Console;
  * Copyright (c) 2005-2010 Zend Technologies USA Inc., licensed under the
  * New BSD License. See http://framework.zend.com for more information.
  */
-require_once 'Zend/Tool/Framework/Client/Console.php';
+// require_once 'Zend/Tool/Framework/Client/Console.php';
 
 class Console extends \Zend\Tool\Framework\Client\Console
 {
@@ -67,7 +67,7 @@ class Console extends \Zend\Tool\Framework\Client\Console
         $response->addContentDecorator(new \Zend\Tool\Framework\Client\Response\ContentDecorator\Separator())
             ->setDefaultDecoratorOptions(array('separator' => true));
 
-        require_once 'Diggin/Tool/Framework/Client/Console/ArgumentParser.php';
+        // require_once 'Diggin/Tool/Framework/Client/Console/ArgumentParser.php';
         $optParser = new ArgumentParser();
         $optParser->setShName($this->_shName);
         $optParser->setArguments($_SERVER['argv'])
@@ -87,7 +87,7 @@ class Console extends \Zend\Tool\Framework\Client\Console
         $response = $this->_registry->getResponse();
 
         if ($response->isException()) {
-            require_once 'Diggin/Tool/Framework/Client/Console/HelpSystem.php';
+            // require_once 'Diggin/Tool/Framework/Client/Console/HelpSystem.php';
             $helpSystem = new HelpSystem();
             $helpSystem->setShName($this->_shName);
             $helpSystem->setRegistry($this->_registry)

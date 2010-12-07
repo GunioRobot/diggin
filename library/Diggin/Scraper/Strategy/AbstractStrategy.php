@@ -21,9 +21,9 @@
 namespace Diggin\Scraper\Strategy;
 
 /** Diggin_Scraper_Callback_Evaluator */
-//require_once 'Diggin/Scraper/Callback/Evaluator.php';
+//// require_once 'Diggin/Scraper/Callback/Evaluator.php';
 /** Diggin_Scraper_Filter_Iterator */
-require_once 'Diggin/Scraper/Filter/Iterator.php';
+// require_once 'Diggin/Scraper/Filter/Iterator.php';
 
 abstract class AbstractStrategy
 {

@@ -19,10 +19,10 @@
 namespace Diggin\Scraper;
 
 /** Diggin_Scraper_Process_Aggregate */
-require_once 'Diggin/Scraper/Process/Aggregate.php';
+// require_once 'Diggin/Scraper/Process/Aggregate.php';
 
 /** Diggin_Scraper_Context */
-require_once 'Diggin/Scraper/Context.php';
+// require_once 'Diggin/Scraper/Context.php';
 
 /**
  * @category  Diggin
@@ -41,8 +41,6 @@ class Scraper extends Process\Aggregate
     protected $_url;
     
     /**
-     * exporessionでサーチ対象のものが無かった場合の
-     * 挙動を決定する。
      */
     protected $_throwTargetExceptionsOn = true;
 
@@ -134,7 +132,7 @@ class Scraper extends Process\Aggregate
             /**
              * @see Zend_Http_Client
              */
-            require_once 'Zend/Http/Client.php';
+            // require_once 'Zend/Http/Client.php';
             self::$_httpClient = new \Zend\Http\Client();
         }
 
@@ -170,11 +168,11 @@ class Scraper extends Process\Aggregate
     {
         try {
             if (!class_exists($strategyName)) {
-                require_once 'Zend/Loader.php';
+                // require_once 'Zend/Loader.php';
                 \Zend\Loader::loadClass($strategyName);
             }
         } catch (\Zend\Exception $e) {
-            require_once 'Diggin/Scraper/Exception.php';
+            // require_once 'Diggin/Scraper/Exception.php';
             throw new Exception("Unable to load strategy '$strategyName': {$e->getMessage()}");
         }
 
@@ -201,7 +199,7 @@ class Scraper extends Process\Aggregate
             /**
              * @see Diggin_Scraper_Strategy_Abstract
              */
-            require_once 'Diggin/Scraper/Strategy/Flexible.php';
+            // require_once 'Diggin/Scraper/Strategy/Flexible.php';
             $strategy = new Strategy\Flexible($response);
             $strategy->setBaseUri($this->_getUrl());
             $strategy->getAdapter()->setConfig(array('url' => $this->_getUrl()));
@@ -236,7 +234,7 @@ class Scraper extends Process\Aggregate
              /**
               * @see Diggin_Scraper_Exception
               */
-             require_once 'Diggin/Scraper/Exception.php';
+             // require_once 'Diggin/Scraper/Exception.php';
              throw new Exception("Http client reported an error: '{$response->getMessage()}'");
         }
         
@@ -257,7 +255,7 @@ class Scraper extends Process\Aggregate
                 $resource['header'] = "HTTP/1.1 200 OK\r\nContent-type: text/html";
             }
             $responseStr = $resource['header']."\r\n\r\n".$resource['body'];
-            require_once 'Zend/Http/Response.php';
+            // require_once 'Zend/Http/Response.php';
             $resource = \Zend\Http\Response::fromString($responseStr);
         }
         
@@ -288,11 +286,11 @@ class Scraper extends Process\Aggregate
 
         // Validate, process arguments
         if (1 === count($args)) {
-            require_once 'Diggin/Scraper/Process/Exception.php';
+            // require_once 'Diggin/Scraper/Process/Exception.php';
             throw new Process\Exception("Process requires over 2 arguments");
         } elseif (2 === count($args)) {
             if (is_array($args[1]) and (! current($args[1]) instanceof Process\Aggregate)) {
-                require_once 'Diggin/Scraper/Process/Exception.php';
+                // require_once 'Diggin/Scraper/Process/Exception.php';
                 throw new Process\Exception("Child Process's value shold be instanceof Diggin_Scraper_Process_Aggregate");
             }
         }
@@ -392,7 +390,7 @@ class Scraper extends Process\Aggregate
     public function getHelperLoader()
     {
         if (!$this->_helperLoader) {
-            require_once 'Zend/Loader/PluginLoader.php';
+            // require_once 'Zend/Loader/PluginLoader.php';
             //initialize helper
             $this->_helperLoader = 
                 new \Zend\Loader\PluginLoader(array(
@@ -426,7 +424,7 @@ class Scraper extends Process\Aggregate
     {
         $helper = $this->getHelper($method);
         if (!method_exists($helper, 'direct')) {
-            require_once 'Diggin/Scraper/Exception.php';
+            // require_once 'Diggin/Scraper/Exception.php';
             throw new Exception('Helper "'.$method.'" does not support overloading via direct()');
         }
 

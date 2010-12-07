@@ -19,7 +19,7 @@
  */
 namespace Diggin\Scraper\Adapter;
 
-require_once 'Diggin/Scraper/Adapter/StringAbstract.php';
+// require_once 'Diggin/Scraper/Adapter/StringAbstract.php';
 
 class Normal extends StringAbstract
 {

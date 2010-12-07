@@ -24,16 +24,16 @@ use Diggin\Uri;
 /**
  * @see Diggin_Scraper_Strategy_Abstract
  */
-require_once 'Diggin/Scraper/Strategy/Abstract.php';
+// require_once 'Diggin/Scraper/Strategy/Abstract.php';
 /**
  * @see Zend_Dom_Query_Css2Xpath
  */
-require_once 'Zend/Dom/Query/Css2Xpath.php';
+// require_once 'Zend/Dom/Query/Css2Xpath.php';
  
 /**
  * @see Diggin_Scraper_Evaluator_Simplexml
  */
-require_once 'Diggin/Scraper/Evaluator/Simplexml.php';
+// require_once 'Diggin/Scraper/Evaluator/Simplexml.php';
 
 class Flexible extends AbstractStrategy
 {
@@ -42,7 +42,7 @@ class Flexible extends AbstractStrategy
     public function setAdapter(\Diggin\Scraper\Adapter\AdapterInterface $adapter)
     {
         if (!($adapter instanceof \Diggin\Scraper\Adapter\SimplexmlAbstract)) {
-            require_once 'Diggin/Scraper/Strategy/Exception.php';
+            // require_once 'Diggin/Scraper/Strategy/Exception.php';
             $msg = get_class($adapter).' is not extends ';
             $msg .= 'Diggin_Scraper_Adapter_SimplexmlAbstract';
             throw new Exception($msg);
@@ -57,7 +57,7 @@ class Flexible extends AbstractStrategy
             /**
              * @see Diggin_Scraper_Adapter_Htmlscraping
              */
-            require_once 'Diggin/Scraper/Adapter/Htmlscraping.php';
+            // require_once 'Diggin/Scraper/Adapter/Htmlscraping.php';
             $this->_adapter = new \Diggin\Scraper\Adapter\Htmlscraping();
         }
 
@@ -79,7 +79,7 @@ class Flexible extends AbstractStrategy
         // count($results) === 0 is not found by xpath-node
         // $results[0] === false is not found by attributes
         if (count($results) === 0 or ($results[0] === false)) {
-            require_once 'Diggin/Scraper/Strategy/Exception.php';
+            // require_once 'Diggin/Scraper/Strategy/Exception.php';
             $exp = self::_xpathOrCss2Xpath($process->getExpression());
             throw new Exception("Couldn't find By Xpath, Process :".$exp);
         }
@@ -126,10 +126,10 @@ class Flexible extends AbstractStrategy
     {
         if (!$this->_baseUri instanceof Uri\Http) {
             $simplexml = $this->readResource();
-            require_once 'Diggin/Scraper/Helper/Simplexml/HeadBaseHref.php';
+            // require_once 'Diggin/Scraper/Helper/Simplexml/HeadBaseHref.php';
             $headBase = new \Diggin\Scraper\Helper\Simplexml\HeadBaseHref($simplexml);
             $headBase->setOption(array('baseUrl' => $this->_baseUri));
-            require_once 'Diggin/Uri/Http.php';
+            // require_once 'Diggin/Uri/Http.php';
             $this->_baseUri = new Uri\Http;
             $this->_baseUri->setBaseUri($headBase->getBaseUrl());
 

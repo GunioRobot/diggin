@@ -21,9 +21,9 @@
 namespace Diggin\Scraper\Helper\Simplexml;
 
 /** Diggin_Scraper_Helper_Simplexml_SimplexmlAbstract */
-require_once 'Diggin/Scraper/Helper/Simplexml/SimplexmlAbstract.php';
+// require_once 'Diggin/Scraper/Helper/Simplexml/SimplexmlAbstract.php';
 /** Diggin_Uri_Http */
-require_once 'Diggin/Uri/Http.php';
+// require_once 'Diggin/Uri/Http.php';
 
 /**
  * Helper for Autodiscovery

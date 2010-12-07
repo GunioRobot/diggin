@@ -21,7 +21,7 @@
 namespace Diggin\Scraper\Helper\Simplexml;
 
 /** Diggin_Scraper_Helper_Simplexml_Simplexml_HeadBaseHref **/
-require_once 'Diggin/Scraper/Helper/Simplexml/HeadBaseHref.php';
+// require_once 'Diggin/Scraper/Helper/Simplexml/HeadBaseHref.php';
 
 /**
  * Helper for pagerize info
@@ -96,7 +96,7 @@ class Pagerize
             return $nextLink; //maybe hAtom only
         }
 
-        require_once 'Diggin/Uri/Http.php';
+        // require_once 'Diggin/Uri/Http.php';
         $uri = new \Diggin\Uri\Http();
         $uri->setBaseUri($baseurl);
         return $uri->getAbsoluteUrl($nextLink);
@@ -144,7 +144,7 @@ class Pagerize
         $key = self::CACHE_TAG_PREFIX.$suffix;
 
         if (array_key_exists($key, self::$_siteinfokeys)) {
-            require_once 'Diggin/Scraper/Helper/Simplexml/Exception.php';
+            // require_once 'Diggin/Scraper/Helper/Simplexml/Exception.php';
             throw new \Diggin\Scraper\Helper\Simplexml\Exception("$key is already used.");
         }
 

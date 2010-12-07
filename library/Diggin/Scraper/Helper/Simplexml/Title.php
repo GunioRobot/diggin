@@ -21,7 +21,7 @@
  */
 namespace Diggin\Scraper\Helper\Simplexml;
 
-require_once 'Diggin/Scraper/Helper/Simplexml/SimplexmlAbstract.php';
+// require_once 'Diggin/Scraper/Helper/Simplexml/SimplexmlAbstract.php';
 
 /**
  * Helper for Search Title

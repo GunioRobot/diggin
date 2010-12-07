@@ -21,7 +21,7 @@
 namespace Diggin\Scraper\Helper\Simplexml;
 
 /** Diggin_Scraper_Helper_Simplexml_SimplexmlAbstract **/
-require_once 'Diggin/Scraper/Helper/Simplexml/SimplexmlAbstract.php';
+// require_once 'Diggin/Scraper/Helper/Simplexml/SimplexmlAbstract.php';
 
 /**
  * Helper for Search Head-Base Tag, ignore bad-scheme
@@ -71,7 +71,7 @@ class HeadBaseHref extends SimplexmlAbstract
     {
         if ($bases = $this->getResource()->xpath('//base[@href]')) {
             rsort($bases);
-            require_once 'Zend/Uri.php';
+            // require_once 'Zend/Uri.php';
             foreach ($bases as $base) {
                 try {
                     $base = current($base->attributes()->href);

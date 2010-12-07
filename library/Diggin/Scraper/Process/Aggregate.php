@@ -22,7 +22,7 @@ namespace Diggin\Scraper\Process;
 /**
  * @see Diggin_Scraper_Process
  */  
-require_once 'Diggin/Scraper/Process.php';
+// require_once 'Diggin/Scraper/Process.php';
 
 class Aggregate implements \IteratorAggregate
 {

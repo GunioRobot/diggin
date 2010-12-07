@@ -22,7 +22,7 @@ namespace Diggin\Http\CookieJar;
 /**
  * @see Diggin_Http_Exception
  */
-require_once 'Diggin/Http/Exception.php';
+// require_once 'Diggin/Http/Exception.php';
 
 class Exception extends \Diggin\Http\Exception
 {}

@@ -52,7 +52,7 @@ class Filter extends \IteratorIterator
                 $iterator = new \RegexIterator($iterator, $filter);
                 $iterator->setMode(\RegexIterator::GET_MATCH);
             } else {
-                require_once 'Diggin/Scraper/Filter/Exception.php';
+                // require_once 'Diggin/Scraper/Filter/Exception.php';
                 throw new Exception("Unable to load filter '$filter': {$e->getMessage()}");
             }
         }
@@ -72,17 +72,17 @@ class Filter extends \IteratorIterator
                     $filter = "Zend_Filter_$filter";
                 }
 
-                require_once 'Zend/Loader.php';
+                // require_once 'Zend/Loader.php';
                 try {
                     \Zend\Loader::loadClass($filter);
                     $filter = new $filter();
                 } catch (\Zend\Exception $e) {
-                    require_once 'Diggin/Scraper/Filter/Exception.php';
+                    // require_once 'Diggin/Scraper/Filter/Exception.php';
                     throw new Exception("Unable to load filter '$filter': {$e->getMessage()}");
                 }
             }
             if (!$filter instanceof \Zend\Filter\Interface) {
-                require_once 'Diggin/Scraper/Filter/Exception.php';
+                // require_once 'Diggin/Scraper/Filter/Exception.php';
                 $className = get_class($filter);
                 throw new Exception("Unable to load filter: $className");
             }

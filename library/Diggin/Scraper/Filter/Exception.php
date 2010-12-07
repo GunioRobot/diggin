@@ -22,7 +22,7 @@ namespace Diggin\Scraper\Filter;
 /**
  * @see Diggin_Scraper_Exception
  */
-require_once 'Diggin/Scraper/Exception.php';
+// require_once 'Diggin/Scraper/Exception.php';
 
 /**
  * @category   Diggin

@@ -21,7 +21,7 @@ namespace Diggin\Http;
 /**
  * @see Diggin_Exception
  */
-require_once 'Diggin/Exception.php';
+// require_once 'Diggin/Exception.php';
 
 class Exception extends \Diggin\Exception
 {}

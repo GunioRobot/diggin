@@ -23,7 +23,7 @@ namespace Diggin\Service\Tumblr;
 /**
  * @see Diggin_Service_Exception
  */
-require_once 'Diggin/Service/Exception.php';
+// require_once 'Diggin/Service/Exception.php';
 
 class Exception extends \Diggin\Service\Exception
 {}

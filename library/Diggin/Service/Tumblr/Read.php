@@ -22,7 +22,7 @@ namespace Diggin\Service\Tumblr;
 /**
  * @see Zend_Service_Abstract
  */
-require_once 'Zend/Service/Abstract.php';
+// require_once 'Zend/Service/Abstract.php';
 
 /**
  * @category   Diggin
@@ -118,7 +118,7 @@ class Read extends \Zend\Service\Abstract
             /**
              * @see Diggin_Service_Tumblr_Exception
              */
-            require_once 'Diggin/Service/Tumblr/Exception.php';
+            // require_once 'Diggin/Service/Tumblr/Exception.php';
             throw new Exception('Tumblr web service has returned something odd!');
         }
 
@@ -230,7 +230,7 @@ class Read extends \Zend\Service\Abstract
              /**
               * @see Diggin_Service_Tumblr_Exception
               */
-            require_once 'Diggin/Service/Tumblr/Exception.php';
+            // require_once 'Diggin/Service/Tumblr/Exception.php';
              throw new Exception("Http client reported an error: '{$response->getMessage()}'");
         }
 
@@ -242,7 +242,7 @@ class Read extends \Zend\Service\Abstract
                /**
                 * @see Diggin_Service_Tumblr_Exception
                 */
-               require_once 'Diggin/Service/Tumblr/Exception.php';
+               // require_once 'Diggin/Service/Tumblr/Exception.php';
                throw new Exception('XML Error');
            }
     

@@ -22,7 +22,7 @@ namespace Diggin\Scraper\Adapter;
 /**
  * @see Diggin_Scraper_Adapter_Interface
  */
-require_once 'Diggin/Scraper/Adapter/Interface.php';
+// require_once 'Diggin/Scraper/Adapter/Interface.php';
 
 abstract class SimplexmlAbstract implements AdapterInterface
 {
@@ -41,12 +41,12 @@ abstract class SimplexmlAbstract implements AdapterInterface
         try {
             $simplexml = $this->getSimplexml($response);
         } catch (\Exception $e){
-            require_once 'Diggin/Scraper/Adapter/Exception.php';
+            // require_once 'Diggin/Scraper/Adapter/Exception.php';
             throw new Exception($e);
         }
         
         if (!$simplexml instanceof \SimpleXMLElement) {
-            require_once 'Diggin/Scraper/Adapter/Exception.php';
+            // require_once 'Diggin/Scraper/Adapter/Exception.php';
             throw new Exception('adapter getSimplexml not return SimpleXMLElement');
         }
         

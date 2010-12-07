@@ -16,7 +16,7 @@ use Diggin\Service;
 
 /**
  * = how to use=
- * require_once 'Diggin/Service/Tumblr/Write.php';
+ * // require_once 'Diggin/Service/Tumblr/Write.php';
  * $tumblr = new Diggin_Service_Tumblr_Write();
  *         //$client = new Zend_Http_Client();
  *         //$client->setConfig(array('timeout'=> 500));
@@ -26,7 +26,7 @@ use Diggin\Service;
  */
 
 /** Zend_Service_Abstract */
-require_once 'Zend/Service/Abstract.php';
+// require_once 'Zend/Service/Abstract.php';
 
 /**
  * @category   Diggin
@@ -135,7 +135,7 @@ class Write extends \Zend\Service\Abstract
             /**
              * @see Diggin_Service_Exception
              */
-            require_once 'Diggin/Service/Exception.php';
+            // require_once 'Diggin/Service/Exception.php';
             $exception = new Service\Exception('Generator Name is longed');
             throw $exception; 
         }
@@ -173,7 +173,7 @@ class Write extends \Zend\Service\Abstract
             /**
              * @see Diggin_Service_Exception
              */
-            require_once 'Diggin/Service/Exception.php';
+            // require_once 'Diggin/Service/Exception.php';
             $exception = new Service\Exception('Requires at least one');
             throw $exception; 
         }
@@ -204,7 +204,7 @@ class Write extends \Zend\Service\Abstract
         } elseif (strtolower($type) == 'data'){
             $posts['data'] = $sourceOrData;
         } else {
-            require_once 'Diggin/Service/Exception.php';
+            // require_once 'Diggin/Service/Exception.php';
             $exception = new Service\Exception('Requires either source or data');
             throw $exception; 
         }

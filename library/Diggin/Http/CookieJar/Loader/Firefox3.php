@@ -22,7 +22,7 @@ namespace Diggin\Http\CookieJar\Loader;
 /**
  * @see Diggin_Http_CookieJar_Loader_Interface
  */
-require_once 'Diggin/Http/CookieJar/Loader/Interface.php';
+// require_once 'Diggin/Http/CookieJar/Loader/Interface.php';
 
 class Firefox3
       implements LoaderInterface
@@ -49,12 +49,12 @@ class Firefox3
         }
         
         if (!is_file($path)) {
-            require_once 'Diggin/Http/CookieJar/Loader/Exception.php';
+            // require_once 'Diggin/Http/CookieJar/Loader/Exception.php';
             throw new Exception('invalid path : '.$path);
         }
         
         if ($ref_uri === true) {
-            require_once 'Diggin/Http/CookieJar/Loader/Exception.php';
+            // require_once 'Diggin/Http/CookieJar/Loader/Exception.php';
             throw new Exception('$ref_uri is not set');
         }
                 
@@ -64,7 +64,7 @@ class Firefox3
            $host = parse_url($ref_uri, PHP_URL_HOST) ? parse_url($ref_uri, PHP_URL_HOST) : $ref_uri;
         }
         
-        require_once 'Zend/Db.php';
+        // require_once 'Zend/Db.php';
         try {
             $db = \Zend\Db::factory('Pdo_Sqlite', array('dbname' => $path) );
             $db->setFetchMode(\Zend\Db::FETCH_OBJ);
@@ -79,7 +79,7 @@ class Firefox3
     
             $fetch = $db->fetchAll($select);
         } catch (\Zend\Db\Exception $e) {
-            require_once 'Diggin/Http/CookieJar/Loader/Exception.php';
+            // require_once 'Diggin/Http/CookieJar/Loader/Exception.php';
             throw new Exception($e);
         }
 
@@ -87,7 +87,7 @@ class Firefox3
             return false;
         }
         
-        require_once 'Zend/Http/CookieJar.php';
+        // require_once 'Zend/Http/CookieJar.php';
         $cookieJar = new \Zend\Http\CookieJar();
         foreach ($fetch as $result) {
             if ($result->name and $result->value and $result->host) {  

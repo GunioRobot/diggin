@@ -20,15 +20,13 @@
 namespace Diggin\Scraper;
 
 /**
- * @see Diggin_Exception
- */
-require_once 'Diggin/Exception.php';
-
-/**
+ * Exception Interface for Diggin_Scraper
+ *
  * @category   Diggin
  * @package    Diggin_Scraper
  * @copyright  2006-2010 sasezaki (http://diggin.musicrider.com)
  * @license    http://diggin.musicrider.com/LICENSE     New BSD License
  */
-class Exception extends \Diggin\Exception
-{}
+interface Exception
+{
+}

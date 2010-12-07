@@ -22,7 +22,7 @@ namespace Diggin\Scraper\Adapter;
 /**
  * @see Diggin_Scraper_Adapter_SimplexmlAbstract
  */
-require_once 'Diggin/Scraper/Adapter/SimplexmlAbstract.php';
+// require_once 'Diggin/Scraper/Adapter/SimplexmlAbstract.php';
 
 class Loadhtml extends SimplexmlAbstract
 {
@@ -40,7 +40,7 @@ class Loadhtml extends SimplexmlAbstract
     public function getSimplexml($response)
     {
         if ($this->config['auto_encoding']) {
-            require_once 'Diggin/Http/Response/Encoding.php';
+            // require_once 'Diggin/Http/Response/Encoding.php';
             $responseBody = \Diggin\Http\Response\Encoding::encodeResponseObject($response);
         } else {
             $responseBody = $response->getBody();

@@ -24,9 +24,9 @@ namespace Diggin\Scraper\Strategy;
 /**
  * @see Diggin_Scraper_Strategy_Abstract
  */
-require_once 'Diggin/Scraper/Strategy/Abstract.php';
+// require_once 'Diggin/Scraper/Strategy/Abstract.php';
 
-require_once 'Diggin/Scraper/Evaluator/String.php';
+// require_once 'Diggin/Scraper/Evaluator/String.php';
 
 class Preg extends AbstractStrategy 
 {
@@ -35,7 +35,7 @@ class Preg extends AbstractStrategy
     public function setAdapter(\Diggin\Scraper\Adapter\AdapterInterface $adapter)
     {
         if (!($adapter instanceof \Diggin\Scraper\Adapter\StringAbstract)) {
-            require_once 'Diggin/Scraper/Strategy/Exception.php';
+            // require_once 'Diggin/Scraper/Strategy/Exception.php';
             $msg = get_class($adapter).'Adapter is not extends ';
             $msg .= 'Diggin_Scraper_Adapter_StringAbstract';
             throw new Exception($msg);
@@ -50,7 +50,7 @@ class Preg extends AbstractStrategy
             /**
              * @see Diggin_Scraper_Adapter
              */
-            require_once 'Diggin/Scraper/Adapter/Normal.php';
+            // require_once 'Diggin/Scraper/Adapter/Normal.php';
             $this->_adapter = new \Diggin\Scraper\Adapter\Normal();
         }
 
@@ -65,7 +65,7 @@ class Preg extends AbstractStrategy
         } elseif (is_string($string)) {
             preg_match_all($process->getExpression(), self::cleanString($string) , $results);
         } else {
-            require_once 'Diggin/Scraper/Strategy/Exception.php';
+            // require_once 'Diggin/Scraper/Strategy/Exception.php';
             throw new Exception('invalid value');
         }
 

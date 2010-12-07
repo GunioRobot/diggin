@@ -20,7 +20,7 @@
  */
 namespace Diggin\Scraper\Filter;
 
-require_once 'Diggin/Scraper/Filter.php';
+// require_once 'Diggin/Scraper/Filter.php';
 
 class Iterator extends \IteratorIterator
 {

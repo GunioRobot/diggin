@@ -27,9 +27,9 @@ namespace Diggin\Http\Client\Adapter;
  * @license    http://diggin.musicrider.com/LICENSE     New BSD License
  */
 
-require_once 'Zend/Uri/Http.php';
-require_once 'Zend/Http/Response.php';
-require_once 'Zend/Http/Client/Adapter/Interface.php';
+// require_once 'Zend/Uri/Http.php';
+// require_once 'Zend/Http/Response.php';
+// require_once 'Zend/Http/Client/Adapter/Interface.php';
 
 /**
  * A testing-purposes adapter.
@@ -129,7 +129,7 @@ class TestPlus implements \Zend\Http\Client\Adapter\Interface
     public function setConfig($config = array())
     {
         if (! is_array($config)) {
-            require_once 'Diggin/Http/Client/Adapter/Exception.php';
+            // require_once 'Diggin/Http/Client/Adapter/Exception.php';
             throw new Exception(
                 '$config expects an array, ' . gettype($config) . ' recieved.');
         }
@@ -152,7 +152,7 @@ class TestPlus implements \Zend\Http\Client\Adapter\Interface
         //fake time out
         sleep($this->_connectiingTime);
         if ($this->_connectiingTime > (int) $this->config['timeout']) {
-            require_once 'Diggin/Http/Client/Adapter/Exception.php';
+            // require_once 'Diggin/Http/Client/Adapter/Exception.php';
             throw new Exception('Unable to set the connection timeout(fake)');
         }
     }
@@ -282,7 +282,7 @@ class TestPlus implements \Zend\Http\Client\Adapter\Interface
     public function setResponseIndex($index)
     {
         if ($index < 0 || $index >= count($this->responses)) {
-            require_once 'Diggin/Http/Client/Adapter/Exception.php';
+            // require_once 'Diggin/Http/Client/Adapter/Exception.php';
             throw new Exception(
                 'Index out of range of response buffer size');
         }
@@ -349,7 +349,7 @@ class TestPlus implements \Zend\Http\Client\Adapter\Interface
      * @return Zend_Http_Client
      */
     public function getAsClient($url = 'http://example.net'){
-        require_once 'Zend/Http/Client.php';
+        // require_once 'Zend/Http/Client.php';
         return new \Zend\Http\Client($url, array('adapter' => $this));
     }
 }

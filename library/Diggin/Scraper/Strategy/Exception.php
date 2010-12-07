@@ -22,7 +22,7 @@ namespace Diggin\Scraper\Strategy;
 /**
  * @see Diggin_Scraper_Exception
  */
-require_once 'Diggin/Scraper/Exception.php';
+// require_once 'Diggin/Scraper/Exception.php';
 
 class Exception extends \Diggin\Scraper\Exception
 {}

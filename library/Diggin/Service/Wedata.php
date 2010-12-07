@@ -21,7 +21,7 @@
 namespace Diggin\Service;
 
 /** Zend_Http_Client */
-require_once 'Zend/Http/Client.php';
+// require_once 'Zend/Http/Client.php';
 
 /**
  * Diggin_Service_Wedata
@@ -120,7 +120,7 @@ class Wedata
         if ($this->_decodetype === false) {
             //nothing to do
         } else {
-            require_once 'Zend/Json.php';
+            // require_once 'Zend/Json.php';
             if ($this->_decodetype === null || $this->_decodetype === \Zend\Json::TYPE_ARRAY) {
                 $value = \Zend\Json::decode($value, \Zend\Json::TYPE_ARRAY);
             } else {
@@ -211,7 +211,7 @@ class Wedata
             return $this->_params['database']['name'];
         }
 
-        require_once 'Diggin/Service/Exception.php';
+        // require_once 'Diggin/Service/Exception.php';
         throw new Exception('database name is not set');
     }
 
@@ -251,7 +251,7 @@ class Wedata
              /**
               * @see Diggin_Service_Exception
               */
-             require_once 'Diggin/Service/Exception.php';
+             // require_once 'Diggin/Service/Exception.php';
              throw new Exception("Http client reported an error: '{$response->getMessage()}'");
         }
         
@@ -279,7 +279,7 @@ class Wedata
         if ($page or ($page = $this->getParam(self::KEY_PAGE))) {
             $params = array(self::KEY_PAGE => $page);
         } else {
-            require_once 'Diggin/Service/Exception.php';
+            // require_once 'Diggin/Service/Exception.php';
             throw new Exception("currently parameter not set 'page'");
         }
         
@@ -294,13 +294,13 @@ class Wedata
         $params = (isset($params)) ? $params : $this->getParams();
         
         if (!isset($params['api_key'])){
-            require_once 'Diggin/Service/Exception.php';
+            // require_once 'Diggin/Service/Exception.php';
             throw new Exception('API key is not set ');
         } elseif (!isset($params['database']['name'])) {
-            require_once 'Diggin/Service/Exception.php';
+            // require_once 'Diggin/Service/Exception.php';
             throw new Exception('Database name is not set ');
         } elseif (!isset($params['database']['required_keys'])) {
-            require_once 'Diggin/Service/Exception.php';
+            // require_once 'Diggin/Service/Exception.php';
             throw new Exception('required_keys is not set');
         }
         
@@ -315,10 +315,10 @@ class Wedata
         $params (isset($params)) ? $params : $this->getParams();
         
         if(!isset($params['api_key'])){
-            require_once 'Diggin/Service/Exception.php';
+            // require_once 'Diggin/Service/Exception.php';
             throw new Exception('API key is not set ');
         } elseif (!isset($params['database']['required_keys'])) {
-            require_once 'Diggin/Service/Exception.php';
+            // require_once 'Diggin/Service/Exception.php';
             throw new Exception('required_keys is not set');
         }
 
@@ -334,7 +334,7 @@ class Wedata
         $params = isset($apiKey) ? array(self::KEY_APIKEY => $apiKey) : $this->getParams();
         
         if (!isset($params[self::KEY_APIKEY])) {
-            require_once 'Diggin/Service/Exception.php';
+            // require_once 'Diggin/Service/Exception.php';
             throw new Exception('API key is not set ');
         }
         
@@ -403,7 +403,7 @@ class Wedata
     public function updateItem($itemId, array $params = array())
     {
         if (!isset($params['api_key'])) {
-            require_once 'Diggin/Service/Exception.php';
+            // require_once 'Diggin/Service/Exception.php';
             throw new Exception('API key is not set ');
         }
         
@@ -420,7 +420,7 @@ class Wedata
         if ($apikey) {
             $params = array('api_key' => $apiKey);
         } else {
-            require_once 'Diggin/Service/Exception.php';
+            // require_once 'Diggin/Service/Exception.php';
             throw new Exception('API key is not set ');
         }
         
