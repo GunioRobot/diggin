@@ -2,9 +2,16 @@ Diggin is a library of PHP Classes.(for spidering)
 main repository is
 http://diggin.googlecode.com/svn/standard/trunk/
 
-install:
+Ver 0.7 (for PHP 5.2) install:
 pear channel-discover openpear.org
-pear install openpear/Diggin-alpha
+pear install openpear/Diggin-beta
+
+You should use ver 0.7
+DON'T USE THIS(ver0.8)
+
+this github repo is for ver 0.8
+    - Refactor to use PHP 5.3-specific paradigms
+    - Refactor to fir Zend Framwork 2 , Symfony2 or other good libraries.
 
 //------------------------------------ 
 Diggin_Scraper
@@ -44,11 +51,5 @@ array(43) {
   }
   [2]=>
 */
-
-//-----------------------------------
-Diggin_Service_Wedata
-- component for wedata.net API
-
-//------------------------------------
 
 and more..
