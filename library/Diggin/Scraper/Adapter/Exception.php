@@ -10,7 +10,7 @@
  * 
  * @category   Diggin
  * @package    Diggin_Scraper
- * @copyright  2006-2010 sasezaki (http://diggin.musicrider.com)
+ * @copyright  2006-2011 sasezaki (http://diggin.musicrider.com)
  * @license    http://diggin.musicrider.com/LICENSE     New BSD License
  */
 
@@ -28,7 +28,7 @@ namespace Diggin\Scraper\Adapter;
  * @category   Diggin
  * @package    Diggin_Scraper
  * @subpackage Adapter
- * @copyright  2006-2010 sasezaki (http://diggin.musicrider.com)
+ * @copyright  2006-2011 sasezaki (http://diggin.musicrider.com)
  * @license    http://diggin.musicrider.com/LICENSE     New BSD License
  */
 class Exception extends \Diggin\Scraper\Exception

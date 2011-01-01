@@ -12,7 +12,7 @@
  * @category   Diggin
  * @package    Diggin_Tool
  * @subpackage Framework
- * @copyright  2006-2010 sasezaki (http://diggin.musicrider.com)
+ * @copyright  2006-2011 sasezaki (http://diggin.musicrider.com)
  * @license    http://diggin.musicrider.com/LICENSE     New BSD License
  */
 
@@ -29,7 +29,7 @@ namespace Diggin\Tool\Framework\Client\Console;
 /**
  * @category   Diggin
  * @package    Diggin_Tool
- * @copyright  2006-2010 sasezaki (http://diggin.musicrider.com)
+ * @copyright  2006-2011 sasezaki (http://diggin.musicrider.com)
  * @license    http://diggin.musicrider.com/LICENSE     New BSD License
  * 
  * This code was mostly adapted from Zend_Tool_Framework_Client_Console_ArgumentParser - a part of the Zend Framework
