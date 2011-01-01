@@ -21,7 +21,7 @@ namespace Diggin;
 /**
  * @category  Diggin
  * @package   Diggin_Version
- * @copyright  2006-2011 sasezaki (http://diggin.musicrider.com)
+ * @copyright 2006-2011 sasezaki (http://diggin.musicrider.com)
  * @license   http://diggin.musicrider.com/LICENSE     New BSD License
  */
 final class Version
@@ -44,6 +44,8 @@ final class Version
      */
     public static function compareVersion($version)
     {
-        return version_compare($version, self::VERSION);
+        $version = strtolower($version);
+        $version = preg_replace('/(\d)pr(\d?)/', '$1a$2', $version);
+        return version_compare($version, strtolower(self::VERSION));
     }
 }

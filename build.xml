@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<project name="diggin" basedir="." default="standard">
+  <target name="standard">
+    <delete dir="reports" includeemptydirs="true" />
+    <mkdir dir="reports" />
+    <phpunit
+      haltonfailure="false"
+      printsummary="true"
+      bootstrap="tests/Bootstrap.php"
+      >
+      <formatter todir="reports" type="xml" outfile="unitreport.xml" />
+      <batchtest>
+        <fileset dir="tests">
+          <include name="**/*Test.php" />
+        </fileset>
+      </batchtest>
+    </phpunit>
+  </target>
+</project>
+
