@@ -1,5 +1,7 @@
 <?php
 
+namespace Diggin\Scraper\Evaluator;
+
 abstract class AbstractEvaluator extends \ArrayIterator
 {
     private $_process;

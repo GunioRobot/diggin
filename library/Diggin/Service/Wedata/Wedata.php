@@ -20,6 +20,8 @@
  */
 namespace Diggin\Service\Wedata;
 
+use Zend\Uri\Url;
+
 /**
  * Diggin_Service_Wedata
  *
@@ -117,7 +119,6 @@ class Wedata
         if ($this->_decodetype === false) {
             //nothing to do
         } else {
-            // require_once 'Zend/Json.php';
             if ($this->_decodetype === null || $this->_decodetype === \Zend\Json\Json::TYPE_ARRAY) {
                 $value = \Zend\Json\Json::decode($value, \Zend\Json\Json::TYPE_ARRAY);
             } else {
@@ -200,7 +201,7 @@ class Wedata
     /**
      * Get Currently database's name
      *
-     * @throws Diggin\Service\Wedata\Exception\InvalidArgumentException
+     * @throws Diggin_Service_Exception
      */
     public function getDatabaseName()
     {
@@ -208,7 +209,8 @@ class Wedata
             return $this->_params['database']['name'];
         }
 
-        throw new Exception\InvalidArgumentException('database name is not set');
+        // require_once 'Diggin/Service/Exception.php';
+        throw new Exception('database name is not set');
     }
 
     /**
@@ -226,7 +228,7 @@ class Wedata
 
         $client->resetParameters();
 
-        $uri = \Zend\Uri::factory(self::API_URL);
+        $uri = new Url(self::API_URL);
         $uri->setPath($path);
 
         if (is_array($params) && count($params) > 0) {
@@ -239,7 +241,7 @@ class Wedata
             }
         }
 
-        $client->setUri($uri->getUri());
+        $client->setUri($uri);
         
         $response = $client->request($method);
         
@@ -248,7 +250,7 @@ class Wedata
               * @see Diggin_Service_Exception
               */
              // require_once 'Diggin/Service/Exception.php';
-             throw new Exception\RuntimeException("Http client reported an error: '{$response->getMessage()}'");
+             throw new Exception("Http client reported an error: '{$response->getMessage()}'");
         }
         
         //return response switching by Reqest Method
@@ -275,7 +277,8 @@ class Wedata
         if ($page or ($page = $this->getParam(self::KEY_PAGE))) {
             $params = array(self::KEY_PAGE => $page);
         } else {
-            throw new Exception\InvalidArgumentException("currently parameter not set 'page'");
+            // require_once 'Diggin/Service/Exception.php';
+            throw new Exception("currently parameter not set 'page'");
         }
         
         $path = sprintf(self::PATH_GET_DATABASE, rawurlencode($databaseName));
@@ -289,10 +292,13 @@ class Wedata
         $params = (isset($params)) ? $params : $this->getParams();
         
         if (!isset($params['api_key'])){
-            throw new Exception\InvalidArgumentException('API key is not set ');
+            // require_once 'Diggin/Service/Exception.php';
+            throw new Exception('API key is not set ');
         } elseif (!isset($params['database']['name'])) {
+            // require_once 'Diggin/Service/Exception.php';
             throw new Exception('Database name is not set ');
         } elseif (!isset($params['database']['required_keys'])) {
+            // require_once 'Diggin/Service/Exception.php';
             throw new Exception('required_keys is not set');
         }
         

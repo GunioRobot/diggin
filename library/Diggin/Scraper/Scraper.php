@@ -18,6 +18,8 @@
  */
 namespace Diggin\Scraper;
 
+use Diggin\Scraper\Process\Aggregate;
+
 /** Diggin_Scraper_Process_Aggregate */
 // require_once 'Diggin/Scraper/Process/Aggregate.php';
 
@@ -177,7 +179,7 @@ class Scraper extends Process\Aggregate
         }
 
         $strategy = new $strategyName($response);
-        $strategy->\setBaseUri($this->_getUrl());
+        $strategy->setBaseUri($this->_getUrl());
 
         if ($adapter) $strategy->setAdapter($adapter);
         if (method_exists($strategy->getAdapter(), 'setConfig')) {
@@ -410,7 +412,7 @@ class Scraper extends Process\Aggregate
     {
         $class = $this->getHelperLoader()->load($name);
 
-        return new $class($this->\\strategy->readResource(), 
+        return new $class($this->strategy->readResource(), 
                           array('baseUrl' => $this->_getUrl()));
     }
 
@@ -436,7 +438,7 @@ class Scraper extends Process\Aggregate
      */
     public static function __callStatic($method, $args)
     {
-        $self = new \self;
+        $self = new self;
         $self->scrape(array_shift($args));
         return $self->__call($method, $args);
     }
