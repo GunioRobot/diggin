@@ -2,13 +2,13 @@
 
 /**
  * Diggin - Simplicity PHP Library
- * 
+ *
  * LICENSE
  *
  * This source file is subject to the new BSD license.
  * It is also available through the world-wide-web at this URL:
  * http://diggin.musicrider.com/LICENSE
- * 
+ *
  * @category   Diggin
  * @package    Diggin_Tool
  * @subpackage Framework
@@ -26,7 +26,7 @@ namespace Diggin\Tool\Framework\Client\Console;
  * @package    Diggin_Tool
  * @copyright  2006-2011 sasezaki (http://diggin.musicrider.com)
  * @license    http://diggin.musicrider.com/LICENSE     New BSD License
- * 
+ *
  * This code was mostly adapted from Zend_Tool_Framework_Client_Console_HelpSystem - a part of the Zend Framework
  * Copyright (c) 2005-2010 Zend Technologies USA Inc., licensed under the
  * New BSD License. See http://framework.zend.com for more information.
@@ -65,8 +65,8 @@ class HelpSystem extends \Zend\Tool\Framework\Client\Console\HelpSystem
             ->appendContent(' [--provider-opts]', $noSeparator)
             ->appendContent(' [provider parameters ...]')
             ->appendContent('    Note: You may use "?" in any place of the above usage string to ask for more specific help information.', array('color'=>'yellow'))
-            //->appendContent('    Example: "zf ? version" will list all available actions for the version provider.', 
-            ->appendContent($text, 
+            //->appendContent('    Example: "zf ? version" will list all available actions for the version provider.',
+            ->appendContent($text,
                             array('color'=>'yellow', 'separator' => 2))
             ->appendContent('Providers and their actions:', array('color' => 'green'));
 
@@ -190,7 +190,7 @@ class HelpSystem extends \Zend\Tool\Framework\Client\Console\HelpSystem
                     $this->_respondWithProviderName($providerMetadata);
                     $providerNameDisplayed = true;
                 }
-                
+
                 if ($includeAllSpecialties || $isSingleSpecialProviderAction) {
 
                     foreach ($providerSignature->getSpecialties() as $specialtyName) {
@@ -222,7 +222,7 @@ class HelpSystem extends \Zend\Tool\Framework\Client\Console\HelpSystem
 
                     }
                 }
-                
+
                 // reset the special flag for single provider action with specialty
                 $isSingleSpecialProviderAction = false;
 
@@ -262,7 +262,7 @@ class HelpSystem extends \Zend\Tool\Framework\Client\Console\HelpSystem
         \Zend\Tool\Framework\Metadata\Tool $parameterLongMetadata)//,
         //Zend_Tool_Framework_Metadata_Tool $parameterShortMetadata)
     {
-      
+
         $shName = $this->_shName;
         $this->_response->appendContent(
             "    $shName " . $actionMetadata->getValue() . ' ' . $providerMetadata->getValue(),

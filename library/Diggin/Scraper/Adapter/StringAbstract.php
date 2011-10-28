@@ -1,13 +1,13 @@
 <?php
 /**
  * Diggin - Simplicity PHP Library
- * 
+ *
  * LICENSE
  *
  * This source file is subject to the new BSD license.
  * It is also available through the world-wide-web at this URL:
  * http://diggin.musicrider.com/LICENSE
- * 
+ *
  * @category   Diggin
  * @package    Diggin_Scraper
  * @copyright  2006-2011 sasezaki (http://diggin.musicrider.com)
@@ -26,12 +26,12 @@ namespace Diggin\Scraper\Adapter;
 
 abstract class StringAbstract implements AdapterInterface
 {
-    
+
     protected abstract function getString($response);
 
     /**
      * Reading Response as String
-     * 
+     *
      * @param object $response
      * @return string
      */
@@ -42,7 +42,7 @@ abstract class StringAbstract implements AdapterInterface
             // require_once 'Diggin/Scraper/Adapter/Exception.php';
             throw new Exception('adapter getString not return String');
         }
-        
+
         return $string;
     }
 }

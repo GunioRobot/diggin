@@ -1,7 +1,7 @@
 <?php
 /**
  * This code was mostly adapted from Zend Framework -
- * 
+ *
  * Zend Framework
  *
  * LICENSE

@@ -27,7 +27,7 @@ class SocketProgressBar
             $adapter = new \Zend\ProgressBar\Adapter\Console();
             $this->_progressBar = new \Zend\ProgressBar($adapter, 0, $this->getMax());
         }
-        
+
         return $this->_progressBar;
 
     }
@@ -51,7 +51,7 @@ class SocketProgressBar
                 if (rtrim($line) === '') break;
             }
         }
-        
+
         $this->_checkSocketReadTimeout();
 
         $statusCode = \Zend\Http\Response::extractCode($response);
@@ -78,7 +78,7 @@ class SocketProgressBar
 
         // If we got a 'transfer-encoding: chunked' header
         if (isset($headers['transfer-encoding'])) {
-            
+
             if (strtolower($headers['transfer-encoding']) == 'chunked') {
 
                 do {
@@ -109,7 +109,7 @@ class SocketProgressBar
                         if($this->out_stream) {
                             if(stream_copy_to_stream($this->socket, $this->out_stream, $read_to - $current_pos) == 0) {
                               $this->_checkSocketReadTimeout();
-                              break;   
+                              break;
                              }
                         } else {
                             $line = @fread($this->socket, $read_to - $current_pos);
@@ -133,7 +133,7 @@ class SocketProgressBar
                 throw new \Zend\Http\Client\Adapter\Exception('Cannot handle "' .
                     $headers['transfer-encoding'] . '" transfer encoding');
             }
-            
+
             // We automatically decode chunked-messages when writing to a stream
             // this means we have to disallow the Zend_Http_Response to do it again
             if ($this->out_stream) {
@@ -145,13 +145,13 @@ class SocketProgressBar
             // If we got more than one Content-Length header (see ZF-9404) use
             // the last value sent
             if (is_array($headers['content-length'])) {
-                $contentLength = $headers['content-length'][count($headers['content-length']) - 1]; 
+                $contentLength = $headers['content-length'][count($headers['content-length']) - 1];
             } else {
                 $contentLength = $headers['content-length'];
             }
 
             if ($contentLength != 0) $this->setMax($contentLength);
-            
+
             $current_pos = ftell($this->socket);
             $chunk = '';
 
@@ -167,11 +167,11 @@ class SocketProgressBar
                  $this->getProgressBar()->update($current_pos);
 
                  //if($this->out_stream) {
-                    
+
                      /*
                      if(@stream_copy_to_stream($this->socket, $this->out_stream, $read_to - $current_pos) == 0) {
                           $this->_checkSocketReadTimeout();
-                          break;   
+                          break;
                      }
                      */
                  //} else {
@@ -203,7 +203,7 @@ class SocketProgressBar
                 if($this->out_stream) {
                     if(@stream_copy_to_stream($this->socket, $this->out_stream) == 0) {
                           $this->_checkSocketReadTimeout();
-                          break;   
+                          break;
                      }
                 }  else {
                     $buff = @fread($this->socket, 8192);

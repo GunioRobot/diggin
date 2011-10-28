@@ -13,7 +13,7 @@ this github repo is for ver 0.8
     - Refactor to use PHP 5.3-specific paradigms
     - Refactor to fir Zend Framwork 2 , Symfony2 or other good libraries.
 
-//------------------------------------ 
+//------------------------------------
 Diggin_Scraper
 - easily scraping like perl's Web::Scraper
 

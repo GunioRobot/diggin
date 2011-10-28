@@ -2,13 +2,13 @@
 
 /**
  * Diggin - Simplicity PHP Library
- * 
+ *
  * LICENSE
  *
  * This source file is subject to the new BSD license.
  * It is also available through the world-wide-web at this URL:
  * http://diggin.musicrider.com/LICENSE
- * 
+ *
  * @category   Diggin
  * @package    Diggin_Scraper
  * @copyright  2006-2011 sasezaki (http://diggin.musicrider.com)
@@ -29,7 +29,7 @@ use Diggin\Uri;
  * @see Zend_Dom_Query_Css2Xpath
  */
 // require_once 'Zend/Dom/Query/Css2Xpath.php';
- 
+
 /**
  * @see Diggin_Scraper_Evaluator_Simplexml
  */
@@ -38,7 +38,7 @@ use Diggin\Uri;
 class Flexible extends AbstractStrategy
 {
     protected $_evaluator;
-    
+
     public function setAdapter(\Diggin\Scraper\Adapter\AdapterInterface $adapter)
     {
         if (!($adapter instanceof \Diggin\Scraper\Adapter\SimplexmlAbstract)) {
@@ -63,7 +63,7 @@ class Flexible extends AbstractStrategy
 
         return $this->_adapter;
     }
-    
+
     /**
      * Extarct values according process
      *
@@ -118,8 +118,8 @@ class Flexible extends AbstractStrategy
 
     /**
      * Get Base Uri object
-     * 
-     * 
+     *
+     *
      * @return Diggin_Uri_Http
      */
     protected function _getBaseuri()

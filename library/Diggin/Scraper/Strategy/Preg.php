@@ -2,13 +2,13 @@
 
 /**
  * Diggin - Simplicity PHP Library
- * 
+ *
  * LICENSE
  *
  * This source file is subject to the new BSD license.
  * It is also available through the world-wide-web at this URL:
  * http://diggin.musicrider.com/LICENSE
- * 
+ *
  * @category   Diggin
  * @package    Diggin_Scraper
  * @copyright  2006-2011 sasezaki (http://diggin.musicrider.com)
@@ -28,7 +28,7 @@ namespace Diggin\Scraper\Strategy;
 
 // require_once 'Diggin/Scraper/Evaluator/String.php';
 
-class Preg extends AbstractStrategy 
+class Preg extends AbstractStrategy
 {
     protected $_evaluator;
 
@@ -74,7 +74,7 @@ class Preg extends AbstractStrategy
 
     /**
      * Body Cleaner for easy dealing with regex
-     * 
+     *
      * @param string
      * @return string
      */

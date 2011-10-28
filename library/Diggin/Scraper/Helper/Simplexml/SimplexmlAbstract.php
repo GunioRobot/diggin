@@ -2,13 +2,13 @@
 
 /**
  * Diggin - Simplicity PHP Library
- * 
+ *
  * LICENSE
  *
  * This source file is subject to the new BSD license.
  * It is also available through the world-wide-web at this URL:
  * http://diggin.musicrider.com/LICENSE
- * 
+ *
  * @category   Diggin
  * @package    Diggin_Scraper
  * @subpackage Helper
@@ -25,11 +25,11 @@ namespace Diggin\Scraper\Helper\Simplexml;
 
 abstract class SimplexmlAbstract extends \Diggin\Scraper\Helper\HelperAbstract
 {
-    
+
     public function setPreAmpFilter($flag)
     {
         $this->setOption(array('preAmpFilter' => $flag));
-        
+
         return $this;
     }
 
@@ -41,7 +41,7 @@ abstract class SimplexmlAbstract extends \Diggin\Scraper\Helper\HelperAbstract
 
         return false;
     }
-    
+
     /**
      * Notes: array-parameter not support since ver 0.7
      */

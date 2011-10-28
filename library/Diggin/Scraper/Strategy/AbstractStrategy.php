@@ -2,13 +2,13 @@
 
 /**
  * Diggin - Simplicity PHP Library
- * 
+ *
  * LICENSE
  *
  * This source file is subject to the new BSD license.
  * It is also available through the world-wide-web at this URL:
  * http://diggin.musicrider.com/LICENSE
- * 
+ *
  * @category   Diggin
  * @package    Diggin_Scraper
  * @copyright  2006-2011 sasezaki (http://diggin.musicrider.com)
@@ -33,7 +33,7 @@ abstract class AbstractStrategy
      * @var Zend_Http_Response
      */
     private $_response;
-    
+
     /**
      * Response Adapter
      *
@@ -54,18 +54,18 @@ abstract class AbstractStrategy
      * @var Zend_Uri
      */
     protected $_baseUri;
-    
+
     /**
-     * set 
-     * 
+     * set
+     *
      */
     protected abstract function setAdapter(\Diggin\Scraper\Adapter\AdapterInterface $adapter);
-    
+
     protected abstract function getAdapter();
-    
+
     /**
      * construct
-     * 
+     *
      * @param Zend_Http_Response
      */
     public function __construct($response)
@@ -77,10 +77,10 @@ abstract class AbstractStrategy
     {
         $this->_baseUri = $uri;
     }
-    
+
     /**
      * Read resource from adapter'read
-     * 
+     *
      * @return mixed
      */
     public function readResource()
@@ -91,20 +91,20 @@ abstract class AbstractStrategy
         return $this->_adaptedResource;
     }
 
-    
+
     public function getResponse()
     {
         return $this->_response;
     }
 
     protected abstract function getEvaluator($values, $process);
-    
+
     protected abstract function extract($values, $process);
 
     /**
      * get values (Recursive)
      *
-     * @param mixed $context 
+     * @param mixed $context
      *          [first:Diggin_Scraper_Context
      *           second:array]
      * @param Diggin_Scraper_Process $process
@@ -114,7 +114,7 @@ abstract class AbstractStrategy
      */
     public function getValues($context, $process)
     {
- 
+
         if ($context instanceof \Diggin\Scraper\Context) {
             $values = $this->extract($context->read(), $process);
         } else {
@@ -157,13 +157,13 @@ abstract class AbstractStrategy
         } else if (is_array($arrayflag)) {
             $values = new \LimitIterator($values, $arrayflag['offset'], $arrayflag['count']);
         }
- 
+
         //@todo using iterator option
-        $values = iterator_to_array($values); 
+        $values = iterator_to_array($values);
         if (false === $arrayflag) {
             return current($values);
         }
- 
+
         return $values;
     }
 }

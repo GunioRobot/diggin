@@ -1,12 +1,12 @@
 <?php
 /**
  * Diggin - Simplicity PHP Library
- * 
+ *
  * LICENSE
  *
  * This source file is subject to the new BSD license.
  * http://diggin.musicrider.com/LICENSE
- * 
+ *
  * @category   Diggin
  * @package    Diggin_Scraper
  * @copyright  2006-2011 sasezaki (http://diggin.musicrider.com)
@@ -31,17 +31,17 @@ use Diggin\Scraper\Process\Aggregate;
  * @package   Diggin_Scraper
  * @copyright 2006-2011 sasezaki (http://diggin.musicrider.com)
  * @license   http://diggin.musicrider.com/LICENSE     New BSD License
- */ 
+ */
 class Scraper extends Process\Aggregate
 {
 
     /**
      * target url of scraping
-     * 
-     * @var string 
+     *
+     * @var string
      */
     protected $_url;
-    
+
     /**
      */
     protected $_throwTargetExceptionsOn = true;
@@ -52,7 +52,7 @@ class Scraper extends Process\Aggregate
      * @param string $_strategyName
      */
     private static $_strategyName;
-    
+
     /**
      * adapter for response
      *
@@ -66,7 +66,7 @@ class Scraper extends Process\Aggregate
      * @param Diggin_Scraper_Strategy_Abstract $_strategy
      */
     protected $_strategy = null;
-    
+
     /**
      * helper loader
      *
@@ -76,7 +76,7 @@ class Scraper extends Process\Aggregate
 
     /**
      * Getting the URL for scraping
-     * 
+     *
      * @return string $this->_url
      */
     private function _getUrl()
@@ -86,10 +86,10 @@ class Scraper extends Process\Aggregate
 
     /**
      * Set the Url for scraping
-     * 
+     *
      * @param string $url
      */
-    public function setUrl ($url) 
+    public function setUrl ($url)
     {
         $this->_url = $url;
     }
@@ -143,7 +143,7 @@ class Scraper extends Process\Aggregate
 
     /**
      * changing Strartegy
-     * 
+     *
      * @param string $strategyName
      * @param Diggin_Scraper_Adapter_Interface $adapter
      */
@@ -160,7 +160,7 @@ class Scraper extends Process\Aggregate
 
     /**
      * calling this scraper's strategy
-     * 
+     *
      * @param Zend_Http_Response $response
      * @param string $strategyName
      * @param Object Diggin_Scraper_Adapter_Interface (optional)
@@ -191,7 +191,7 @@ class Scraper extends Process\Aggregate
 
     /**
      * Return this scraper's strategy
-     * 
+     *
      * @param Zend_Http_Response $response
      * @return Diggin_Scraper_Strategy
      */
@@ -205,16 +205,16 @@ class Scraper extends Process\Aggregate
             $strategy = new Strategy\Flexible($response);
             $strategy->setBaseUri($this->_getUrl());
             $strategy->getAdapter()->setConfig(array('url' => $this->_getUrl()));
-            
+
             $this->_strategy = $strategy;
         }
-        
+
         return $this->_strategy;
     }
-    
+
     /**
      * making request
-     * 
+     *
      * @param string $url
      * @return Zend_Http_Response $response
      * @throws Diggin_Scraper_Exception
@@ -222,7 +222,7 @@ class Scraper extends Process\Aggregate
     protected function _makeRequest($url = null)
     {
         $client = self::getHttpClient();
-        
+
         if ($url) {
             $this->setUrl($url);
             $client->setUri($url);
@@ -239,13 +239,13 @@ class Scraper extends Process\Aggregate
              // require_once 'Diggin/Scraper/Exception.php';
              throw new Exception("Http client reported an error: '{$response->getMessage()}'");
         }
-        
+
         return $response;
     }
 
     /**
      * Get response via mixed pattern
-     * 
+     *
      * @param mixed
      */
     protected function getResponse($resource)
@@ -260,22 +260,22 @@ class Scraper extends Process\Aggregate
             // require_once 'Zend/Http/Response.php';
             $resource = \Zend\Http\Response::fromString($responseStr);
         }
-        
+
         // if set uri
         if (!$resource instanceof \Zend\Http\Response) {
             $resource = $this->_makeRequest($resource);
         }
-        
+
         return $resource;
     }
-    
+
     /**
      * $scraper->process($expression, $key, $value_type, $filter1, $filter2,,,)
      */
     public function process($args)
     {
         $args = func_get_args();
-        
+
         if ($args[0] instanceof Process\Process) {
             $this->_processes[] = $args[0];
             return $this;
@@ -298,7 +298,7 @@ class Scraper extends Process\Aggregate
         }
 
         $expression = array_shift($args);
-        
+
         // check child process
         if (is_array($args[0])) {
             $name = key($args[0]);
@@ -330,7 +330,7 @@ class Scraper extends Process\Aggregate
             } else {
                 $arrayflag = false;
             }
-            
+
             $process = new Process\Process();
             $process->setExpression($expression);
             $process->setName(trim($name));
@@ -346,7 +346,7 @@ class Scraper extends Process\Aggregate
 
     /**
      * scraping
-     * 
+     *
      * @param (string | Zend_Http_Response | array) $resource
      *      setting URL, Zend_Http_Response, array($html)
      * @param string (if $resource is not URL, please set URL for recognize)
@@ -358,7 +358,7 @@ class Scraper extends Process\Aggregate
     public function scrape($resource = null, $baseUrl = null)
     {
         $resource = $this->getResponse($resource);
-        
+
         if (isset($baseUrl)) {
             $this->setUrl($baseUrl);
         }
@@ -387,14 +387,14 @@ class Scraper extends Process\Aggregate
     /**
      * get this helper's plugin loader
      *
-     * @return Zend_Loader_PluginLoader 
+     * @return Zend_Loader_PluginLoader
      */
     public function getHelperLoader()
     {
         if (!$this->_helperLoader) {
             // require_once 'Zend/Loader/PluginLoader.php';
             //initialize helper
-            $this->_helperLoader = 
+            $this->_helperLoader =
                 new \Zend\Loader\PluginLoader(array(
                 'Diggin_Scraper_Helper_Simplexml' => 'Diggin/Scraper/Helper/Simplexml'));
         }
@@ -412,7 +412,7 @@ class Scraper extends Process\Aggregate
     {
         $class = $this->getHelperLoader()->load($name);
 
-        return new $class($this->strategy->readResource(), 
+        return new $class($this->strategy->readResource(),
                           array('baseUrl' => $this->_getUrl()));
     }
 
@@ -421,7 +421,7 @@ class Scraper extends Process\Aggregate
      *
      * @param string $method
      * @param array $args
-     */ 
+     */
     public function __call($method, $args)
     {
         $helper = $this->getHelper($method);

@@ -1,8 +1,8 @@
 <?php
 /**
  * This class is remodeling of Zend_Http_Client_Adapter_Test
- * 
- * Zend Framework : 
+ *
+ * Zend Framework :
  * @copyright  Copyright (c) 2005-2008 Zend Technologies USA Inc. (http://www.zend.com)
  * @license    http://diggin.musicrider.com/LICENSE     New BSD License
  */
@@ -14,12 +14,12 @@ namespace Diggin\Http\Client\Adapter;
 
 /**
  * Diggin - Simplicity PHP Library
- * 
+ *
  * LICENSE
  *
  * This source file is subject to the new BSD license.
  * http://diggin.musicrider.com/LICENSE
- * 
+ *
  * @category   Diggin
  * @package    Diggin_Http
  * @subpackage Client_Adapter
@@ -58,24 +58,24 @@ class TestPlus implements \Zend\Http\Client\Adapter\Interface
      * @var integer
      */
     protected $responseIndex = 0;
-    
+
     /**
      * size of response
      *
      * @var unknown_type
      */
     protected $_resposesize;
-    
+
     /**
      * random status
      *
      * @var array
      */
     protected $_statusRandom;
-    
-    
+
+
     protected $_connectiingTime = 0;
-    
+
 	/**     *
      * @var unknown_type
      */
@@ -87,7 +87,7 @@ class TestPlus implements \Zend\Http\Client\Adapter\Interface
      * @var array
      */
     protected $_testResponseBody = array();
-    
+
     /**
      * Adapter constructor
      *
@@ -104,9 +104,9 @@ class TestPlus implements \Zend\Http\Client\Adapter\Interface
                            '</body>'.PHP_EOL.
                            '</html>';
         }
-        
+
         if (is_null($responseHeader)) {
-           $responseHeader = 
+           $responseHeader =
            "HTTP/1.1 200 OK"        ."\r\n".
            "Date: Sat, 02 Aug 2008 15:17:11 GMT"."\r\n".
            "Server: Apache/2.2.6 (Win32) mod_ssl/2.2.6 OpenSSL/0.9.8e PHP/5.2.5"."\r\n".
@@ -115,9 +115,9 @@ class TestPlus implements \Zend\Http\Client\Adapter\Interface
            "Content-length: 1000"   . "\r\n" .
            "Connection: close"      . "\r\n" .
            "Content-type: text/html; charset=utf-8;";
-           
+
         }
-        
+
         $this->setResponse($responseHeader."\r\n\r\n".$responseBody);
     }
 
@@ -148,7 +148,7 @@ class TestPlus implements \Zend\Http\Client\Adapter\Interface
      * @param int     $timeout
      */
     public function connect($host, $port = 80, $secure = false)
-    { 
+    {
         //fake time out
         sleep($this->_connectiingTime);
         if ($this->_connectiingTime > (int) $this->config['timeout']) {
@@ -185,7 +185,7 @@ class TestPlus implements \Zend\Http\Client\Adapter\Interface
         $request .= "\r\n" . $body;
 
         // Do nothing - just return the request as string
-        
+
         return $request;
     }
 
@@ -201,28 +201,28 @@ class TestPlus implements \Zend\Http\Client\Adapter\Interface
         }
         $response_str = $this->responses[$this->responseIndex];
         $this->responseIndex++;
-        
+
         if ($this->_statusRandom)
         {
-            
-            
+
+
             $keys = array();
             $start_index = 0;
             foreach ($this->_statusRandom as $code => $num) {
                 $keys = array_merge($keys, array_fill($start_index, $num, $code));
                 $start_index = $start_index + $num;
-            }            
-            
+            }
+
             shuffle($keys);
             $code = current($keys);
-            
+
             $headers = \Zend\Http\Response::extractHeaders($response_str);
             $body = \Zend\Http\Response::extractBody($response_str);
             $response = new \Zend\Http\Response($code, $headers, $body);
-            
-            $response_str = $response->asString();            
+
+            $response_str = $response->asString();
         }
-        
+
         if ($this->_randomResponseBodyInterval)
         {
             if(time() % 2 == 1) {
@@ -232,12 +232,12 @@ class TestPlus implements \Zend\Http\Client\Adapter\Interface
                 $response_str = $response->asString();
             }
         }
-        
+
         if ($this->_resposesize)
         {
             $response_str = str_pad($response_str, $this->_resposesize);
         }
-             
+
         return $response_str;
     }
 
@@ -288,9 +288,9 @@ class TestPlus implements \Zend\Http\Client\Adapter\Interface
         }
         $this->responseIndex = $index;
     }
-    
+
     /**
-     * Sets fake response size(by strlen oops..) 
+     * Sets fake response size(by strlen oops..)
      *
      * @param int $size
      */
@@ -298,38 +298,38 @@ class TestPlus implements \Zend\Http\Client\Adapter\Interface
     {
         $this->_resposesize = $size;
     }
-    
+
     /**
      * statusがkeyで、頻度をvalueにセットした配列を渡す
-     * 
-     * @param mixed 
+     *
+     * @param mixed
      */
-    public function setStatusRandom(array $config = 
+    public function setStatusRandom(array $config =
                                         array(200 => 10, 404 => 1, 500 =>1))
     {
-        
+
         //$responseCode = Zend_Http_Response::responseCodeAsText();
         //@todoステータスコードにないものをキーに設定したときexception
-        
+
         $this->_statusRandom = $config;
     }
-    
+
     /**
      * set connect time
      *
-     * @param int $time 
+     * @param int $time
      */
     public function setConnectingTime($time)
     {
         $this->_connectiingTime = $time;
     }
-    
+
     public function setResponseBodyRandom($timeInterval = 5, $addResponseBody = null)
     {
         $this->_randomResponseBodyInterval = $timeInterval;
-        
 
-        //@todo array_shift(func_get_args)        
+
+        //@todo array_shift(func_get_args)
         if (is_null($addResponseBody)) {
         $addResponseBody = '<html lang="ja">'.
                            '<head>'.
@@ -341,7 +341,7 @@ class TestPlus implements \Zend\Http\Client\Adapter\Interface
 
       $this->_testResponseBody[1] = $addResponseBody;
     }
-    
+
     /**
      * Getting Zend_Http_Client
      *

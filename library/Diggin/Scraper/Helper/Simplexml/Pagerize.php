@@ -1,13 +1,13 @@
 <?php
 /**
  * Diggin - Simplicity PHP Library
- * 
+ *
  * LICENSE
  *
  * This source file is subject to the new BSD license.
  * It is also available through the world-wide-web at this URL:
  * http://diggin.musicrider.com/LICENSE
- * 
+ *
  * @category   Diggin
  * @package    Diggin_Scraper
  * @subpackage Helper
@@ -34,7 +34,7 @@ namespace Diggin\Scraper\Helper\Simplexml;
 class Pagerize
         extends HeadBaseHref
 {
-    
+
     const HATOM_PAGEELEMENT = '//*[contains(concat(" ", @class, " "), " hentry ")]';
     const HATOM_NEXTLINK = '//link[contains(concat(" ", translate(normalize-space(@rel),"NEXT","next"), " "), " next ")] | //a[contains(concat(" ", translate(normalize-space(@rel),"NEXT","next"), " "), " next ")]';
 
@@ -53,7 +53,7 @@ class Pagerize
     /**
      * @var array
      */
-    private static $_siteinfokeys = array(); 
+    private static $_siteinfokeys = array();
 
     public function direct($preferHeadBase = true, $preferhAtom = true)
     {
@@ -69,7 +69,7 @@ class Pagerize
     {
         self::$_cache = $cache;
     }
-    
+
     public function getNextLink($preferHeadBase = true, $preferhAtom = true)
     {
         $baseurl = $this->getBaseUrl($preferHeadBase);
@@ -80,7 +80,7 @@ class Pagerize
         // LIFO
         if (count(self::$_siteinfokeys) !== 0) {
             foreach (array_reverse(self::$_siteinfokeys) as $key) {
-                $siteinfos = self::getSiteinfo($key); 
+                $siteinfos = self::getSiteinfo($key);
                 if ($next = $this->getNextLinkFromSiteinfo($siteinfos, $baseurl)) {
                     $nextLink = $next;
                     break;
@@ -101,8 +101,8 @@ class Pagerize
         $uri->setBaseUri($baseurl);
         return $uri->getAbsoluteUrl($nextLink);
     }
-    
-    //checks, 
+
+    //checks,
     public function hAtomNextLink()
     {
         $nextpageelement = $this->getResource()->xpath(self::HATOM_NEXTLINK);
@@ -120,7 +120,7 @@ class Pagerize
      * @param string $url base url
      * @return mixed
      */
-    protected function getNextlinkFromSiteInfo($items, $url) 
+    protected function getNextlinkFromSiteInfo($items, $url)
     {
         foreach ($items as $item) {
             //hAtom 対策
@@ -135,7 +135,7 @@ class Pagerize
                 }
             }
         }
-        
+
         return null;
     }
 
@@ -170,7 +170,7 @@ class Pagerize
     {
         return self::$_cache->load(self::CACHE_TAG_PREFIX.$suffix);
     }
-    
-    
+
+
 
 }

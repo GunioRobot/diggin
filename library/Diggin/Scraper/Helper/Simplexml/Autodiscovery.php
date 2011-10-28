@@ -1,13 +1,13 @@
 <?php
 /**
  * Diggin - Simplicity PHP Library
- * 
+ *
  * LICENSE
  *
  * This source file is subject to the new BSD license.
  * It is also available through the world-wide-web at this URL:
  * http://diggin.musicrider.com/LICENSE
- * 
+ *
  * @category   Diggin
  * @package    Diggin_Scraper
  * @subpackage Helper
@@ -42,7 +42,7 @@ class Autodiscovery extends SimplexmlAbstract
 
     /**
      * Perform helper when called as $scraper->autodiscovery() from Diggin_Scraper object
-     * 
+     *
      * @param string $type
      * @param string|Zend_Uri_Http $baseUrl
      * @return mixed
@@ -51,10 +51,10 @@ class Autodiscovery extends SimplexmlAbstract
     {
         return $this->discovery($type, $baseUrl);
     }
-    
+
     /**
      * discovery feed url
-     * 
+     *
      * @param string $type
      * @param string|Zend_Uri_Http $baseUrl
      * @return mixed
@@ -66,14 +66,14 @@ class Autodiscovery extends SimplexmlAbstract
         } else if ($type === 'atom') {
             $xpath = self::XPATH_ATOM;
         } else {
-            $xpath = self::XPATH_BOTH; 
+            $xpath = self::XPATH_BOTH;
         }
-        
+
         if ($links = $this->getResource()->xpath($xpath)) {
-            
+
             $ret = array();
             foreach ($links as $v) {
-                
+
                 if (isset($baseUrl)) {
                     $uri = new \Diggin\Uri\Http();
                     $uri->setBaseUri($baseUrl);
@@ -82,10 +82,10 @@ class Autodiscovery extends SimplexmlAbstract
                     $ret[] = current($v->href);
                 }
             }
-            
+
             return $ret;
         }
-        
+
         return null;
     }
 }

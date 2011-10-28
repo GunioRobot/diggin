@@ -1,12 +1,12 @@
 <?php
 /**
  * Diggin - Simplicity PHP Library
- * 
+ *
  * LICENSE
  *
  * This source file is subject to the new BSD license.
  * http://diggin.musicrider.com/LICENSE
- * 
+ *
  * @category   Diggin
  * @package    Diggin_Service
  * @subpackage Tumblr
@@ -36,11 +36,11 @@ namespace Diggin\Service\Tumblr;
 
 class Read extends \Zend\Service\Abstract
 {
-    
+
     const API_URL = 'http://%s.tumblr.com/api/read';
-    
+
     const READ_NUM_MAX = 50;
-    
+
     /**
      * Zend_Http_Client Object
      *
@@ -49,7 +49,7 @@ class Read extends \Zend\Service\Abstract
     protected $_client;
 
     private $_apiUrl;
-    
+
     /**
      * Microtime of last request
      *
@@ -65,13 +65,13 @@ class Read extends \Zend\Service\Abstract
      */
     public function __construct($target = null)
     {
-    
+
         if (parse_url($target, PHP_URL_HOST)) {
            $apiUrl = $target;
         } else {
             $apiUrl = sprintf(self::API_URL, $target);
         }
-    
+
         $this->_apiUrl = $apiUrl;
     }
 
@@ -84,13 +84,13 @@ class Read extends \Zend\Service\Abstract
     {
         $this->_apiUrl = sprintf(self::API_URL, $target);
     }
-    
-    
+
+
     public function setApiUrl($url)
     {
         $this->_apiUrl = $url;
     }
-    
+
     public function getApiUrl()
     {
         return $this->_apiUrl;
@@ -100,7 +100,7 @@ class Read extends \Zend\Service\Abstract
     {
         return $this->countTotal($this->makeRequest());
     }
-    
+
     public function countTotal(\DOMDocument $dom)
     {
         $rootNode = $dom->documentElement;
@@ -124,10 +124,10 @@ class Read extends \Zend\Service\Abstract
 
         return $total;
     }
-    
+
     /*
      * get 'posts' as array
-     * 
+     *
      * @param array $parms
      * @return array $posts
      */
@@ -136,37 +136,37 @@ class Read extends \Zend\Service\Abstract
         $start = 0;
         $loop = 1;
         $postsArr = array();
-        
+
         if (isset($parms['start'])) {
             $start = $parms['start'];
         }
-        
+
         if ($parms['num'] > self::READ_NUM_MAX) {
             $loop += floor($parms['num']/self::READ_NUM_MAX);
             $parms['num'] = self::READ_NUM_MAX;
         }
-        
+
         for ($i = 0; $i < $loop; $i++) {
             $parms['start'] = $i * self::READ_NUM_MAX + $start;
             $response = $this->makeRequest($parms);
             $postsArr = $postsArr + $this->_xmlResponseToPostArray($response, $maxWidth);
         }
-                    
+
         return $postsArr;
     }
-    
+
     public function dumpAsXmls($path = '/workspace/', $filePrefix = 'tumblr_', $parms = array())
     {
-         
+
         if (!$parms['num']) {
-            $parms['num'] = $this->getTotal(); 
-        }      
+            $parms['num'] = $this->getTotal();
+        }
 
         $start = 0;
         $num = 50;
         $loop = 1;
         $postsArr = array();
-        
+
         if ($parms['start']) {
             $start = $parms['start'];
         }
@@ -175,32 +175,32 @@ class Read extends \Zend\Service\Abstract
             $loop += floor($parms['num']-1/$num);
             $parms['num'] = 50;
         }
-        
+
         for ($i = 0; $i < $loop; $i++) {
             $parms['start'] = $i * $num + $start;
             //if ($i + 1 == $loop and ($mod = fmod($parmNum, $num)) !== 0) $parms['num'] = $mod;
             $response = $this->makeRequest($parms);
             $response->save($path.$filePrefix.$i.'.xml');
         }
-        
+
     }
-    
-    
+
+
     //This is test method
     public function getAllPhotoUrl()
     {
         $parms['type'] = 'photo';
-        
+
         $parms['num'] = $this->getTotal();
         $posts = $this->getPosts($parms);
         foreach ($posts as $post) {
             $arrPhotoUrl[] = $post['photo-url'];
-        }     
-         
+        }
+
         return $arrPhotoUrl;
     }
-    
-        
+
+
     /**
      * Handles all GET requests to a web service
      *
@@ -222,10 +222,10 @@ class Read extends \Zend\Service\Abstract
         if (isset($parms)) {
             $this->_client->setParameterGet($parms);
         }
-        
+
         self::$_lastRequestTime = microtime(true);
         $response = $this->_client->request();
-        
+
         if (!$response->isSuccessful()) {
              /**
               * @see Diggin_Service_Tumblr_Exception
@@ -235,9 +235,9 @@ class Read extends \Zend\Service\Abstract
         }
 
         $responseBody = $response->getBody();
-        
+
         $dom = new \DOMDocument() ;
-    
+
            if (!@$dom->loadXML($responseBody)) {
                /**
                 * @see Diggin_Service_Tumblr_Exception
@@ -245,11 +245,11 @@ class Read extends \Zend\Service\Abstract
                // require_once 'Diggin/Service/Tumblr/Exception.php';
                throw new Exception('XML Error');
            }
-    
+
         return $dom;
 
     }
-    
+
     /**
      * Transform XML string to array
      *
@@ -262,16 +262,16 @@ class Read extends \Zend\Service\Abstract
         $child = 'posts';   //childには　tumblelog, posts
         $arrOut = array();
         $rootNode = $response->documentElement;
-        
+
         $childNodes = $rootNode->childNodes;
 
         for ($i = 0; $i < $childNodes->length; $i++) {
                 $currentNode = $childNodes->item($i);
                 if ($currentNode->nodeName == $child) {
-                    
+
                     for ($n = 0; $n < $currentNode->childNodes->length; $n++){
                         $postNode = $currentNode->childNodes->item($n);
-                        
+
                         $id = $postNode->getAttribute('id');
                         $arrOut[$id]['id'] = $postNode->getAttribute('id');
                         $arrOut[$id]['url'] = $postNode->getAttribute('url');
@@ -292,7 +292,7 @@ class Read extends \Zend\Service\Abstract
                 }
 
         }
-        
+
         return $arrOut;
     }
 

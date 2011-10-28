@@ -1,13 +1,13 @@
 <?php
 /**
  * Diggin - Simplicity PHP Library
- * 
+ *
  * LICENSE
  *
  * This source file is subject to the new BSD license.
  * It is also available through the world-wide-web at this URL:
  * http://diggin.musicrider.com/LICENSE
- * 
+ *
  * @category   Diggin
  * @package    Diggin_Scraper
  * @copyright  2006-2011 sasezaki (http://diggin.musicrider.com)
@@ -30,11 +30,11 @@ class Loadhtml extends SimplexmlAbstract
         'xml_manifesto' => false,
         'auto_encoding' => true
     );
-    
+
     /**
      * Casts a SimpleXMLElement
-     * 
-     * @param Zend_Htp_Response 
+     *
+     * @param Zend_Htp_Response
      * @return SimpleXMLElement
      */
     public function getSimplexml($response)
@@ -49,7 +49,7 @@ class Loadhtml extends SimplexmlAbstract
         $responseBody = str_replace('&', '&amp;', $responseBody);
         $dom = @\DOMDocument::loadHTML($responseBody);
         $simplexml = simplexml_import_dom($dom);
-        
+
         // ここまででもいいのだけど。
         // XML宣言が付いていないので付与する。
         if ($this->config["xml_manifesto"] === true) {
@@ -59,7 +59,7 @@ class Loadhtml extends SimplexmlAbstract
                 if (1 !== preg_match('/^<\\?xml version="1.0"/', $str)) {
                     $str = '<?xml version="1.0" encoding="UTF-8"?>' . "\n" . $str;
                 }
-                
+
                 //@see http://goungoun.dip.jp/app/fswiki/wiki.cgi/devnotebook?
                 // page=PHP5%A1%A2%CC%A4%C0%B0%B7%C1HTML%A4%F2SimpleXML%A4%D8%CA%D1%B4%B9
                 // HTML中の改行が数値文字参照になってしまったので、
@@ -68,10 +68,10 @@ class Loadhtml extends SimplexmlAbstract
             }
             $simplexml = simplexml_load_string($str);
         }
-        
+
         return $simplexml;
     }
-    
+
     /**
      * Set configuration parameters for this
      *
@@ -89,13 +89,13 @@ class Loadhtml extends SimplexmlAbstract
 
         return $this;
     }
-    
+
     /**
      * 数値文字参照を文字に戻す。
      *
      * 以下より
      * http://blog.koshigoe.jp/archives/2007/04/phpdomdocument.html
-     * 
+     *
      * @param string $string
      * @return string
      */
@@ -111,7 +111,7 @@ class Loadhtml extends SimplexmlAbstract
                                        array(0x0, 0x10000, 0, 0xfffff),
                                        "UTF-8");
     }
-    
+
     public function getConfig($key)
     {
         return $this->config[strtolower($key)];

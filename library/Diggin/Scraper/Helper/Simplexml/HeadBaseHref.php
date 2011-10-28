@@ -1,13 +1,13 @@
 <?php
 /**
  * Diggin - Simplicity PHP Library
- * 
+ *
  * LICENSE
  *
  * This source file is subject to the new BSD license.
  * It is also available through the world-wide-web at this URL:
  * http://diggin.musicrider.com/LICENSE
- * 
+ *
  * @category   Diggin
  * @package    Diggin_Scraper
  * @subpackage Helper
@@ -34,7 +34,7 @@ namespace Diggin\Scraper\Helper\Simplexml;
 class HeadBaseHref extends SimplexmlAbstract
 {
     /**
-     * 
+     *
      *
      */
     public function direct()
@@ -48,7 +48,7 @@ class HeadBaseHref extends SimplexmlAbstract
             $headBaseUrl = $this->getHeadBaseUrl();
             if ($headBaseUrl) {
                 return $headBaseUrl;
-            } 
+            }
         }
 
         if (array_key_exists('baseUrl',$this->_option)){
@@ -60,7 +60,7 @@ class HeadBaseHref extends SimplexmlAbstract
 
     /**
      * Search Base Href
-     * 
+     *
      * firefoxではbaseタグが複数記述されていた場合は、最後のものを考慮する。
      * スキーマがよろしくない場合は、その前のものを考慮
      * httpスキーマではない場合は無視される。
@@ -82,7 +82,7 @@ class HeadBaseHref extends SimplexmlAbstract
                 }
             }
         }
-        
+
         return null;
     }
 }

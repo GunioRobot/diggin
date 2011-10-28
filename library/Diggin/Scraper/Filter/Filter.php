@@ -2,13 +2,13 @@
 
 /**
  * Diggin - Simplicity PHP Library
- * 
+ *
  * LICENSE
  *
  * This source file is subject to the new BSD license.
  * It is also available through the world-wide-web at this URL:
  * http://diggin.musicrider.com/LICENSE
- * 
+ *
  * @category   Diggin
  * @package    Diggin_Scraper
  * @copyright  2006-2011 sasezaki (http://diggin.musicrider.com)
@@ -38,7 +38,7 @@ class Filter extends \IteratorIterator
      */
     public static function factory(\Iterator $iterator, $filter)
     {
-        if ( ($filter instanceof \Zend\Filter\Interface) or 
+        if ( ($filter instanceof \Zend\Filter\Interface) or
               (is_string($filter) and (preg_match('/^[0-9a-zA-Z]/', $filter)) or
               is_callable($filter)) ) {
             $iterator = new \self($iterator);
@@ -96,9 +96,9 @@ class Filter extends \IteratorIterator
      */
     public function current()
     {
-        return call_user_func(is_array($this->_filter) ? 
-                                array(current($this->_filter), key($this->_filter)) : 
-                                $this->_filter, 
+        return call_user_func(is_array($this->_filter) ?
+                                array(current($this->_filter), key($this->_filter)) :
+                                $this->_filter,
                               parent::current());
     }
 }

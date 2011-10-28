@@ -2,13 +2,13 @@
 
 /**
  * Diggin - Simplicity PHP Library
- * 
+ *
  * LICENSE
  *
  * This source file is subject to the new BSD license.
  * It is also available through the world-wide-web at this URL:
  * http://diggin.musicrider.com/LICENSE
- * 
+ *
  * @category   Diggin
  * @package    Diggin_Tool
  * @subpackage Framework
@@ -26,7 +26,7 @@ namespace Diggin\Tool\Framework\Client\Console;
  * @package    Diggin_Tool
  * @copyright  2006-2011 sasezaki (http://diggin.musicrider.com)
  * @license    http://diggin.musicrider.com/LICENSE     New BSD License
- * 
+ *
  * This code was mostly adapted from Zend_Tool_Framework_Client_Console - a part of the Zend Framework
  * Copyright (c) 2005-2010 Zend Technologies USA Inc., licensed under the
  * New BSD License. See http://framework.zend.com for more information.

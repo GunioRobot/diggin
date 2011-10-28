@@ -21,7 +21,7 @@ namespace Diggin\Scraper\Process;
 
 /**
  * @see Diggin_Scraper_Process
- */  
+ */
 // require_once 'Diggin/Scraper/Process.php';
 
 class Aggregate implements \IteratorAggregate
@@ -29,36 +29,36 @@ class Aggregate implements \IteratorAggregate
 
     protected $_processes = array();
 
-    public function getProcesses() 
+    public function getProcesses()
     {
         return $this->_processes;
     }
-    
-    public function getIterator() 
+
+    public function getIterator()
     {
         return new \ArrayIterator($this->_processes);
     }
-    
+
     /**
      * setting process like DSL of Web::Scraper
      * Sample&Demo is : demos/Diggin/Scraper/
-     * 
+     *
      * @params mixed args1, args2, args3,,,
      * $thisObejct->process('expresssion', 'key => val, filter, filter,', 'key => val)
      * like
      * $thisObejct->process('//div[@class="post-content"]/ul/li/a', 'title => TEXT')
-     * 
+     *
      * expression : (depend on)Strategy
-     *  [Default] Css Or Xpath 
-     * key : results's key. 
+     *  [Default] Css Or Xpath
+     * key : results's key.
      *  $scraper->results['key'];
      *  can access as this class's property (by __get method)
      *  $scraper->key
      * val : (depend on)Strategy
      * filter :
-     *  filtering by 
+     *  filtering by
      *  user_func , Zend_Filter_*, Your_Filter_*(implements Zend_Filter_Interface)
-     * 
+     *
      * @see Diggin_Scraper_Filter
      * @return Diggin_Scraper_Process_Aggregate Provides a fluent interface
      */
@@ -66,14 +66,14 @@ class Aggregate implements \IteratorAggregate
     {
 
         $args = func_get_args();
-        
+
         if ($args[0] instanceof Process) {
             $this->_processes[] = $args[0];
             return $this;
         }
 
         $expression = array_shift($args);
- 
+
         foreach ($args as $nametype) {
             if(is_string($nametype)) {
                 if (strpos($nametype, '=>') !== false) {
